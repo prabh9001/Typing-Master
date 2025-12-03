@@ -1,15 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>TypeMee</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome | Typemee</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background:url(https://cdn.pixabay.com/photo/2012/12/17/19/14/keyboard-70506_1280.jpg);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Poppins", sans-serif;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            background: white;
+            color: #4f46e5;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #e0e7ff;
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome</h1>
 
-    <!-- Button that redirects to next page -->
-    <button onclick="window.location.href='index.html'">
-        Go to Next Page
-    </button>
+    <div class="container">
+        <h1>Welcome to Typemee 🚀</h1>
+        <p>Your journey to faster and smarter typing starts now.</p>
+
+        <!-- Change nextpage.html to your typing page link -->
+        <a href="index.html" class="btn">Start Typing</a>
+    </div>
+
 </body>
 </html>
