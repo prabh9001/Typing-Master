@@ -941,10 +941,7 @@ let soundEnabled = false; // Disabled by default since removed from UI
 const settingsModal = document.getElementById('settings-modal');
 const closeModalBtn = document.querySelector('.close-modal');
 
-// Get setting buttons (removed sound and theme)
-const textSmallBtn = document.getElementById('text-small-btn');
-const textMediumBtn = document.getElementById('text-medium-btn');
-const textLargeBtn = document.getElementById('text-large-btn');
+// Get setting buttons (removed sound, theme, and text size)
 const keyboardToggleBtn = document.getElementById('keyboard-toggle-btn');
 
 if (settingsBtn) {
@@ -967,55 +964,6 @@ window.addEventListener('click', (e) => {
         settingsModal.style.display = 'none';
     }
 });
-
-// Text size buttons - NOW AFFECTS BOTH INSTRUCTION TEXT AND TYPING AREA
-if (textSmallBtn) {
-    textSmallBtn.addEventListener('click', () => {
-        const typingArea = document.getElementById('typing-area');
-        const instructionText = document.getElementById('instruction-text');
-        if (typingArea) {
-            typingArea.className = 'typing-area text-small';
-        }
-        if (instructionText) {
-            instructionText.className = 'instruction-text text-small';
-        }
-        textSmallBtn.classList.add('active');
-        textMediumBtn.classList.remove('active');
-        textLargeBtn.classList.remove('active');
-    });
-}
-
-if (textMediumBtn) {
-    textMediumBtn.addEventListener('click', () => {
-        const typingArea = document.getElementById('typing-area');
-        const instructionText = document.getElementById('instruction-text');
-        if (typingArea) {
-            typingArea.className = 'typing-area text-medium';
-        }
-        if (instructionText) {
-            instructionText.className = 'instruction-text text-medium';
-        }
-        textMediumBtn.classList.add('active');
-        textSmallBtn.classList.remove('active');
-        textLargeBtn.classList.remove('active');
-    });
-}
-
-if (textLargeBtn) {
-    textLargeBtn.addEventListener('click', () => {
-        const typingArea = document.getElementById('typing-area');
-        const instructionText = document.getElementById('instruction-text');
-        if (typingArea) {
-            typingArea.className = 'typing-area text-large';
-        }
-        if (instructionText) {
-            instructionText.className = 'instruction-text text-large';
-        }
-        textLargeBtn.classList.add('active');
-        textSmallBtn.classList.remove('active');
-        textMediumBtn.classList.remove('active');
-    });
-}
 
 // Keyboard display toggle - FIXED: Only toggle visibility, don't re-render
 if (keyboardToggleBtn) {
