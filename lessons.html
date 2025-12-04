@@ -12,456 +12,989 @@
         <div class='logo'>
             <span>TypeMee</span>
         </div>
+        <div style='flex: 1; text-align: center; font-weight: 500; font-size: 1.1rem; color: #202124;' id='user-name-display'></div>
         <div class='header-controls'>
+            <button onclick='clearHistory()' style='background: none; border: 1px solid #dadce0; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.9rem;'>Clear History</button>
         </div>
     </header>
     <main style='background-color: #f1f3f4; align-items: flex-start; justify-content: flex-start; overflow-y: auto; flex: 1;'>
         <div style='width: 100%; padding: 40px 10%; box-sizing: border-box;'>
             <h1 style='color: #202124; margin-bottom: 30px;'>Typing Lessons</h1>
             <div class='lesson-grid'>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=1'">
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=1'" id="lesson-1">
                     <div class="lesson-number">Lesson 1</div>
+                    <div class="lesson-title">Hand Positioning</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem;">Learn proper hand placement on the keyboard.</p>
+                    <div class="lesson-history" id="history-1" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-1">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-1">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-1">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=2'" id="lesson-2">
+                    <div class="lesson-number">Lesson 2</div>
                     <div class="lesson-title">Introduction to Typing</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     <p style="color: #5f6368; font-size: 0.9rem;">Learn the home row keys F and J.</p>
+                    <div class="lesson-history" id="history-2" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-2">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-2">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-2">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=2'">
-                    <div class="lesson-number">Lesson 2</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=3'" id="lesson-3">
+                    <div class="lesson-number">Lesson 3</div>
                     <div class="lesson-title">F & J Practice</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-3" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-3">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-3">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-3">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=3'">
-                    <div class="lesson-number">Lesson 3</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=4'" id="lesson-4">
+                    <div class="lesson-number">Lesson 4</div>
                     <div class="lesson-title">D & K Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-4" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-4">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-4">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-4">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=4'">
-                    <div class="lesson-number">Lesson 4</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=5'" id="lesson-5">
+                    <div class="lesson-number">Lesson 5</div>
                     <div class="lesson-title">S & L Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-5" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-5">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-5">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-5">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=5'">
-                    <div class="lesson-number">Lesson 5</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=6'" id="lesson-6">
+                    <div class="lesson-number">Lesson 6</div>
                     <div class="lesson-title">A & ; Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-6" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-6">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-6">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-6">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=6'">
-                    <div class="lesson-number">Lesson 6</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=7'" id="lesson-7">
+                    <div class="lesson-number">Lesson 7</div>
                     <div class="lesson-title">G & H Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-7" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-7">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-7">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-7">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=7'">
-                    <div class="lesson-number">Lesson 7</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=8'" id="lesson-8">
+                    <div class="lesson-number">Lesson 8</div>
                     <div class="lesson-title">Home Row Complete</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-8" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-8">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-8">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-8">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=8'">
-                    <div class="lesson-number">Lesson 8</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=9'" id="lesson-9">
+                    <div class="lesson-number">Lesson 9</div>
                     <div class="lesson-title">R & U Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-9" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-9">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-9">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-9">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=9'">
-                    <div class="lesson-number">Lesson 9</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=10'" id="lesson-10">
+                    <div class="lesson-number">Lesson 10</div>
                     <div class="lesson-title">E & I Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-10" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-10">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-10">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-10">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=10'">
-                    <div class="lesson-number">Lesson 10</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=11'" id="lesson-11">
+                    <div class="lesson-number">Lesson 11</div>
                     <div class="lesson-title">W & O Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-11" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-11">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-11">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-11">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=11'">
-                    <div class="lesson-number">Lesson 11</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=12'" id="lesson-12">
+                    <div class="lesson-number">Lesson 12</div>
                     <div class="lesson-title">Q & P Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-12" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-12">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-12">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-12">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=12'">
-                    <div class="lesson-number">Lesson 12</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=13'" id="lesson-13">
+                    <div class="lesson-number">Lesson 13</div>
                     <div class="lesson-title">T & Y Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-13" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-13">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-13">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-13">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=13'">
-                    <div class="lesson-number">Lesson 13</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=14'" id="lesson-14">
+                    <div class="lesson-number">Lesson 14</div>
                     <div class="lesson-title">Top Row Complete</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-14" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-14">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-14">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-14">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=14'">
-                    <div class="lesson-number">Lesson 14</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=15'" id="lesson-15">
+                    <div class="lesson-number">Lesson 15</div>
                     <div class="lesson-title">V & M Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-15" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-15">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-15">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-15">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=15'">
-                    <div class="lesson-number">Lesson 15</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=16'" id="lesson-16">
+                    <div class="lesson-number">Lesson 16</div>
                     <div class="lesson-title">C & , Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-16" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-16">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-16">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-16">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=16'">
-                    <div class="lesson-number">Lesson 16</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=17'" id="lesson-17">
+                    <div class="lesson-number">Lesson 17</div>
                     <div class="lesson-title">X & . Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-17" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-17">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-17">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-17">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=17'">
-                    <div class="lesson-number">Lesson 17</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=18'" id="lesson-18">
+                    <div class="lesson-number">Lesson 18</div>
                     <div class="lesson-title">Z & / Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-18" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-18">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-18">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-18">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=18'">
-                    <div class="lesson-number">Lesson 18</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=19'" id="lesson-19">
+                    <div class="lesson-number">Lesson 19</div>
                     <div class="lesson-title">B & N Keys</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-19" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-19">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-19">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-19">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=19'">
-                    <div class="lesson-number">Lesson 19</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=20'" id="lesson-20">
+                    <div class="lesson-number">Lesson 20</div>
                     <div class="lesson-title">Bottom Row Complete</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-20" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-20">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-20">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-20">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=20'">
-                    <div class="lesson-number">Lesson 20</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=21'" id="lesson-21">
+                    <div class="lesson-number">Lesson 21</div>
                     <div class="lesson-title">Full Keyboard</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-21" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-21">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-21">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-21">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=21'">
-                    <div class="lesson-number">Lesson 21</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=22'" id="lesson-22">
+                    <div class="lesson-number">Lesson 22</div>
                     <div class="lesson-title">Paragraph Practice 1</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     <p style="color: #5f6368; font-size: 0.9rem;">Type full sentences and paragraphs.</p>
+                    <div class="lesson-history" id="history-22" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-22">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-22">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-22">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=22'">
-                    <div class="lesson-number">Lesson 22</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=23'" id="lesson-23">
+                    <div class="lesson-number">Lesson 23</div>
                     <div class="lesson-title">Paragraph Practice 2</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     <p style="color: #5f6368; font-size: 0.9rem;">More complex paragraph typing.</p>
+                    <div class="lesson-history" id="history-23" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-23">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-23">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-23">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=23'">
-                    <div class="lesson-number">Lesson 23</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=24'" id="lesson-24">
+                    <div class="lesson-number">Lesson 24</div>
                     <div class="lesson-title">Famous Quotes</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     <p style="color: #5f6368; font-size: 0.9rem;">Type famous inspirational quotes.</p>
+                    <div class="lesson-history" id="history-24" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-24">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-24">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-24">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=24'">
-                    <div class="lesson-number">Lesson 24</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=25'" id="lesson-25">
+                    <div class="lesson-number">Lesson 25</div>
                     <div class="lesson-title">Speed Challenge</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     <p style="color: #5f6368; font-size: 0.9rem;">Test your speed with longer texts.</p>
+                    <div class="lesson-history" id="history-25" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-25">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-25">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-25">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=25'">
-                    <div class="lesson-number">Lesson 25</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=26'" id="lesson-26">
+                    <div class="lesson-number">Lesson 26</div>
                     <div class="lesson-title">Numbers 1-5</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-26" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-26">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-26">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-26">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=26'">
-                    <div class="lesson-number">Lesson 26</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=27'" id="lesson-27">
+                    <div class="lesson-number">Lesson 27</div>
                     <div class="lesson-title">Numbers 6-0</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-27" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-27">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-27">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-27">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=27'">
-                    <div class="lesson-number">Lesson 27</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=28'" id="lesson-28">
+                    <div class="lesson-number">Lesson 28</div>
                     <div class="lesson-title">Full Number Practice</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-28" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-28">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-28">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-28">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=28'">
-                    <div class="lesson-number">Lesson 28</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=29'" id="lesson-29">
+                    <div class="lesson-number">Lesson 29</div>
                     <div class="lesson-title">Basic Punctuation</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-29" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-29">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-29">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-29">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=29'">
-                    <div class="lesson-number">Lesson 29</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=30'" id="lesson-30">
+                    <div class="lesson-number">Lesson 30</div>
                     <div class="lesson-title">Email & Web</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-30" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-30">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-30">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-30">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=30'">
-                    <div class="lesson-number">Lesson 30</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=31'" id="lesson-31">
+                    <div class="lesson-number">Lesson 31</div>
                     <div class="lesson-title">Common Words 1</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-31" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-31">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-31">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-31">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=31'">
-                    <div class="lesson-number">Lesson 31</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=32'" id="lesson-32">
+                    <div class="lesson-number">Lesson 32</div>
                     <div class="lesson-title">Common Words 2</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-32" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-32">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-32">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-32">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=32'">
-                    <div class="lesson-number">Lesson 32</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=33'" id="lesson-33">
+                    <div class="lesson-number">Lesson 33</div>
                     <div class="lesson-title">Greetings</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-33" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-33">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-33">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-33">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=33'">
-                    <div class="lesson-number">Lesson 33</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=34'" id="lesson-34">
+                    <div class="lesson-number">Lesson 34</div>
                     <div class="lesson-title">Questions</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-34" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-34">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-34">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-34">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=34'">
-                    <div class="lesson-number">Lesson 34</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=35'" id="lesson-35">
+                    <div class="lesson-number">Lesson 35</div>
                     <div class="lesson-title">Short Answers</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-35" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-35">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-35">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-35">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=35'">
-                    <div class="lesson-number">Lesson 35</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=36'" id="lesson-36">
+                    <div class="lesson-number">Lesson 36</div>
                     <div class="lesson-title">Days of Week</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-36" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-36">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-36">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-36">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=36'">
-                    <div class="lesson-number">Lesson 36</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=37'" id="lesson-37">
+                    <div class="lesson-number">Lesson 37</div>
                     <div class="lesson-title">Months</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-37" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-37">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-37">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-37">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=37'">
-                    <div class="lesson-number">Lesson 37</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=38'" id="lesson-38">
+                    <div class="lesson-number">Lesson 38</div>
                     <div class="lesson-title">Colors</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-38" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-38">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-38">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-38">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=38'">
-                    <div class="lesson-number">Lesson 38</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=39'" id="lesson-39">
+                    <div class="lesson-number">Lesson 39</div>
                     <div class="lesson-title">Food Words</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-39" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-39">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-39">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-39">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=39'">
-                    <div class="lesson-number">Lesson 39</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=40'" id="lesson-40">
+                    <div class="lesson-number">Lesson 40</div>
                     <div class="lesson-title">Animals</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-40" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-40">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-40">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-40">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=40'">
-                    <div class="lesson-number">Lesson 40</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=41'" id="lesson-41">
+                    <div class="lesson-number">Lesson 41</div>
                     <div class="lesson-title">Family Words</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-41" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-41">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-41">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-41">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=41'">
-                    <div class="lesson-number">Lesson 41</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=42'" id="lesson-42">
+                    <div class="lesson-number">Lesson 42</div>
                     <div class="lesson-title">Weather</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-42" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-42">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-42">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-42">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=42'">
-                    <div class="lesson-number">Lesson 42</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=43'" id="lesson-43">
+                    <div class="lesson-number">Lesson 43</div>
                     <div class="lesson-title">Office Terms</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-43" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-43">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-43">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-43">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=43'">
-                    <div class="lesson-number">Lesson 43</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=44'" id="lesson-44">
+                    <div class="lesson-number">Lesson 44</div>
                     <div class="lesson-title">Travel Words</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-44" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-44">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-44">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-44">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=44'">
-                    <div class="lesson-number">Lesson 44</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=45'" id="lesson-45">
+                    <div class="lesson-number">Lesson 45</div>
                     <div class="lesson-title">Technology</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-45" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-45">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-45">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-45">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=45'">
-                    <div class="lesson-number">Lesson 45</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=46'" id="lesson-46">
+                    <div class="lesson-number">Lesson 46</div>
                     <div class="lesson-title">Education</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-46" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-46">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-46">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-46">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=46'">
-                    <div class="lesson-number">Lesson 46</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=47'" id="lesson-47">
+                    <div class="lesson-number">Lesson 47</div>
                     <div class="lesson-title">Sports</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-47" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-47">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-47">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-47">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=47'">
-                    <div class="lesson-number">Lesson 47</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=48'" id="lesson-48">
+                    <div class="lesson-number">Lesson 48</div>
                     <div class="lesson-title">Shopping</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-48" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-48">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-48">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-48">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=48'">
-                    <div class="lesson-number">Lesson 48</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=49'" id="lesson-49">
+                    <div class="lesson-number">Lesson 49</div>
                     <div class="lesson-title">Cooking</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-49" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-49">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-49">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-49">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=49'">
-                    <div class="lesson-number">Lesson 49</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=50'" id="lesson-50">
+                    <div class="lesson-number">Lesson 50</div>
                     <div class="lesson-title">Health</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-50" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-50">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-50">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-50">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=50'">
-                    <div class="lesson-number">Lesson 50</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=51'" id="lesson-51">
+                    <div class="lesson-number">Lesson 51</div>
                     <div class="lesson-title">Nature</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-51" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-51">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-51">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-51">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=51'">
-                    <div class="lesson-number">Lesson 51</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=52'" id="lesson-52">
+                    <div class="lesson-number">Lesson 52</div>
                     <div class="lesson-title">Time Expressions</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-52" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-52">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-52">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-52">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=52'">
-                    <div class="lesson-number">Lesson 52</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=53'" id="lesson-53">
+                    <div class="lesson-number">Lesson 53</div>
                     <div class="lesson-title">Directions</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-53" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-53">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-53">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-53">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=53'">
-                    <div class="lesson-number">Lesson 53</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=54'" id="lesson-54">
+                    <div class="lesson-number">Lesson 54</div>
                     <div class="lesson-title">Emotions</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-54" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-54">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-54">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-54">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=54'">
-                    <div class="lesson-number">Lesson 54</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=55'" id="lesson-55">
+                    <div class="lesson-number">Lesson 55</div>
                     <div class="lesson-title">Actions</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-55" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-55">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-55">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-55">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=55'">
-                    <div class="lesson-number">Lesson 55</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=56'" id="lesson-56">
+                    <div class="lesson-number">Lesson 56</div>
                     <div class="lesson-title">Descriptions</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-56" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-56">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-56">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-56">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=56'">
-                    <div class="lesson-number">Lesson 56</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=57'" id="lesson-57">
+                    <div class="lesson-number">Lesson 57</div>
                     <div class="lesson-title">Social Media</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-57" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-57">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-57">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-57">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=57'">
-                    <div class="lesson-number">Lesson 57</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=58'" id="lesson-58">
+                    <div class="lesson-number">Lesson 58</div>
                     <div class="lesson-title">Music</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-58" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-58">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-58">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-58">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=58'">
-                    <div class="lesson-number">Lesson 58</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=59'" id="lesson-59">
+                    <div class="lesson-number">Lesson 59</div>
                     <div class="lesson-title">Books & Reading</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-59" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-59">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-59">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-59">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=59'">
-                    <div class="lesson-number">Lesson 59</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=60'" id="lesson-60">
+                    <div class="lesson-number">Lesson 60</div>
                     <div class="lesson-title">Movies & TV</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-60" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-60">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-60">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-60">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=60'">
-                    <div class="lesson-number">Lesson 60</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=61'" id="lesson-61">
+                    <div class="lesson-number">Lesson 61</div>
                     <div class="lesson-title">Hobbies</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-61" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-61">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-61">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-61">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=61'">
-                    <div class="lesson-number">Lesson 61</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=62'" id="lesson-62">
+                    <div class="lesson-number">Lesson 62</div>
                     <div class="lesson-title">Relationships</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-62" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-62">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-62">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-62">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=62'">
-                    <div class="lesson-number">Lesson 62</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=63'" id="lesson-63">
+                    <div class="lesson-number">Lesson 63</div>
                     <div class="lesson-title">Work & Career</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-63" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-63">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-63">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-63">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=63'">
-                    <div class="lesson-number">Lesson 63</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=64'" id="lesson-64">
+                    <div class="lesson-number">Lesson 64</div>
                     <div class="lesson-title">Money & Finance</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-64" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-64">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-64">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-64">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=64'">
-                    <div class="lesson-number">Lesson 64</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=65'" id="lesson-65">
+                    <div class="lesson-number">Lesson 65</div>
                     <div class="lesson-title">Geography</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-65" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-65">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-65">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-65">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=65'">
-                    <div class="lesson-number">Lesson 65</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=66'" id="lesson-66">
+                    <div class="lesson-number">Lesson 66</div>
                     <div class="lesson-title">Science</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-66" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-66">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-66">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-66">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=66'">
-                    <div class="lesson-number">Lesson 66</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=67'" id="lesson-67">
+                    <div class="lesson-number">Lesson 67</div>
                     <div class="lesson-title">History</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-67" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-67">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-67">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-67">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=67'">
-                    <div class="lesson-number">Lesson 67</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=68'" id="lesson-68">
+                    <div class="lesson-number">Lesson 68</div>
                     <div class="lesson-title">Art</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-68" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-68">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-68">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-68">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=68'">
-                    <div class="lesson-number">Lesson 68</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=69'" id="lesson-69">
+                    <div class="lesson-number">Lesson 69</div>
                     <div class="lesson-title">Religion & Culture</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-69" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-69">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-69">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-69">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=69'">
-                    <div class="lesson-number">Lesson 69</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=70'" id="lesson-70">
+                    <div class="lesson-number">Lesson 70</div>
                     <div class="lesson-title">Law & Government</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-70" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-70">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-70">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-70">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=70'">
-                    <div class="lesson-number">Lesson 70</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=71'" id="lesson-71">
+                    <div class="lesson-number">Lesson 71</div>
                     <div class="lesson-title">Environment</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-71" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-71">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-71">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-71">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=71'">
-                    <div class="lesson-number">Lesson 71</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=72'" id="lesson-72">
+                    <div class="lesson-number">Lesson 72</div>
                     <div class="lesson-title">Motivational Quotes</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-72" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-72">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-72">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-72">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=72'">
-                    <div class="lesson-number">Lesson 72</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=73'" id="lesson-73">
+                    <div class="lesson-number">Lesson 73</div>
                     <div class="lesson-title">Famous Sayings</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-73" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-73">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-73">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-73">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=73'">
-                    <div class="lesson-number">Lesson 73</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=74'" id="lesson-74">
+                    <div class="lesson-number">Lesson 74</div>
                     <div class="lesson-title">Business Email</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-74" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-74">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-74">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-74">-</span></div>
+                        </div>
+                    </div>
                 </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=74'">
-                    <div class="lesson-number">Lesson 74</div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=75'" id="lesson-75">
+                    <div class="lesson-number">Lesson 75</div>
                     <div class="lesson-title">Speed Master</div>
                     <div class="lesson-stars">☆☆☆☆☆</div>
                     
+                    <div class="lesson-history" id="history-75" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-75">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-75">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-75">-</span></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -469,5 +1002,45 @@
     <footer style='text-align:center; padding:20px 0; font-size:14px; color:#666; background-color: #f1f3f4;'>
         © 2025 Prabhjeet Singh. All rights reserved.
     </footer>
+    <script>
+        // Load and display lesson history from sessionStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            // Display username in header (already set from index.html)
+            const userName = sessionStorage.getItem('userName') || 'Guest';
+            const nameDisplay = document.getElementById('user-name-display');
+            if (nameDisplay) {
+                nameDisplay.textContent = 'Welcome, ' + userName + '!';
+            }
+
+            // Load lesson history
+            try {
+                const stored = sessionStorage.getItem('lessonHistory');
+                if (stored) {
+                    const history = JSON.parse(stored);
+                    for (const lessonId in history) {
+                        const stats = history[lessonId];
+                        const historyDiv = document.getElementById('history-' + lessonId);
+                        if (historyDiv) {
+                            document.getElementById('wpm-' + lessonId).textContent = stats.wpm;
+                            document.getElementById('acc-' + lessonId).textContent = stats.accuracy;
+                            document.getElementById('err-' + lessonId).textContent = stats.mistakes;
+                            historyDiv.style.display = 'block';
+                        }
+                    }
+                }
+            } catch (e) {
+                console.error('Error loading lesson history:', e);
+            }
+        });
+
+        // Clear lesson history and username
+        function clearHistory() {
+            if (confirm('Are you sure you want to clear all lesson history and reset your name?')) {
+                sessionStorage.removeItem('lessonHistory');
+                sessionStorage.removeItem('userName');
+                location.reload();
+            }
+        }
+    </script>
 </body>
 </html>

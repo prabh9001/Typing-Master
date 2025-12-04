@@ -210,7 +210,7 @@
         <h1>TypeMee</h1>
         <p class="tagline">Master the Art of Touch Typing</p>
 
-        <button class="cta-button" onclick="window.location.href='lessons.html'">
+        <button class="cta-button" onclick="startApp()">
             Start Learning
         </button>
 
@@ -229,6 +229,20 @@
             </div>
         </div>
     </div>
+    <script>
+        function startApp() {
+            let userName = sessionStorage.getItem('userName');
+            if (!userName) {
+                userName = prompt('Welcome to TypeMee! Please enter your name:');
+                if (userName && userName.trim()) {
+                    sessionStorage.setItem('userName', userName.trim());
+                } else {
+                    sessionStorage.setItem('userName', 'Guest');
+                }
+            }
+            window.location.href = 'lessons.html';
+        }
+    </script>
 </body>
 
 </html>

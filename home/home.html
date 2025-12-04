@@ -17,6 +17,10 @@
         <div class="logo" onclick="window.location.href='../lessons.html'" style="cursor: pointer;">
             <span>TypeMee</span>
         </div>
+        <div style="flex: 1; text-align: center; font-weight: 500; font-size: 1.1rem; color: #202124;">
+            <span id="lesson-number-display" style="color: var(--primary-color); margin-right: 15px;"></span>
+            <span id="user-name-display"></span>
+        </div>
         <div class="header-controls">
             <button class="icon-btn" title="Settings">⚙️</button>
         </div>
@@ -83,6 +87,24 @@
         © 2025 Prabhjeet Singh. All rights reserved.
     </footer>
     <script src="../script.js"></script>
+    <script>
+        // Display username and lesson number in header
+        document.addEventListener('DOMContentLoaded', function () {
+            const userName = sessionStorage.getItem('userName') || 'Guest';
+            const nameDisplay = document.getElementById('user-name-display');
+            if (nameDisplay) {
+                nameDisplay.textContent = 'Welcome, ' + userName + '!';
+            }
+
+            // Get lesson number from URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const lessonId = urlParams.get('lesson');
+            const lessonNumberDisplay = document.getElementById('lesson-number-display');
+            if (lessonNumberDisplay && lessonId) {
+                lessonNumberDisplay.textContent = 'Lesson ' + lessonId;
+            }
+        });
+    </script>
 </body>
 
 </html>

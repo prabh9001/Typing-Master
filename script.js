@@ -2,6 +2,16 @@
 const lessons = [
     {
         id: 1,
+        title: "Hand Positioning",
+        steps: [
+            { type: 'instruction', text: "Place your left fingers on A S D F and right fingers on J K L ;. These are the home row keys.", key: 'f', hand: 'left', finger: 'index' },
+            { type: 'instruction', text: "Your index fingers should rest on F and J. Feel the small bumps on these keys.", key: 'j', hand: 'right', finger: 'index' },
+            { type: 'instruction', text: "Keep your fingers curved and wrists straight. Return to home row after each key press.", key: 'f', hand: 'left', finger: 'index' },
+            { type: 'practice', text: "f j f j f j" }
+        ]
+    },
+    {
+        id: 2,
         title: "Introduction to Typing",
         steps: [
             { type: 'instruction', text: "Type the f key using your left index finger.", key: 'f', hand: 'left', finger: 'index' },
@@ -13,7 +23,7 @@ const lessons = [
         ]
     },
     {
-        id: 2,
+        id: 3,
         title: "F & J Practice",
         steps: [
             { type: 'practice', text: "ffff jjjj ffff jjjj" },
@@ -22,8 +32,8 @@ const lessons = [
             { type: 'practice', text: "jfjf fjfj fff jjj" }
         ]
     },
-        {
-        id: 3,
+    {
+        id: 4,
         title: "D & K Keys",
         steps: [
             { type: 'instruction', text: "Type the d key (left middle) and k key (right middle).", key: 'd', hand: 'left', finger: 'middle' },
@@ -33,7 +43,7 @@ const lessons = [
         ]
     },
     {
-        id: 4,
+        id: 5,
         title: "S & L Keys",
         steps: [
             { type: 'instruction', text: "Type the s key (left ring) and l key (right ring).", key: 's', hand: 'left', finger: 'ring' },
@@ -43,7 +53,7 @@ const lessons = [
         ]
     },
     {
-        id: 5,
+        id: 6,
         title: "A & ; Keys",
         steps: [
             { type: 'instruction', text: "Type the a key (left pinky) and ; key (right pinky).", key: 'a', hand: 'left', finger: 'pinky' },
@@ -53,7 +63,7 @@ const lessons = [
         ]
     },
     {
-        id: 6,
+        id: 7,
         title: "G & H Keys",
         steps: [
             { type: 'instruction', text: "Reach with your index fingers to type g (left) and h (right).", key: 'g', hand: 'left', finger: 'index' },
@@ -63,7 +73,7 @@ const lessons = [
         ]
     },
     {
-        id: 7,
+        id: 8,
         title: "Home Row Complete",
         steps: [
             { type: 'practice', text: "asdfghjkl;" },
@@ -73,7 +83,7 @@ const lessons = [
         ]
     },
     {
-        id: 8,
+        id: 9,
         title: "R & U Keys",
         steps: [
             { type: 'instruction', text: "Reach up with your index fingers: R (left) and U (right).", key: 'r', hand: 'left', finger: 'index' },
@@ -83,7 +93,7 @@ const lessons = [
         ]
     },
     {
-        id: 9,
+        id: 10,
         title: "E & I Keys",
         steps: [
             { type: 'instruction', text: "Reach up with your middle fingers: E (left) and I (right).", key: 'e', hand: 'left', finger: 'middle' },
@@ -93,7 +103,7 @@ const lessons = [
         ]
     },
     {
-        id: 10,
+        id: 11,
         title: "W & O Keys",
         steps: [
             { type: 'instruction', text: "Reach up with your ring fingers: W (left) and O (right).", key: 'w', hand: 'left', finger: 'ring' },
@@ -103,7 +113,7 @@ const lessons = [
         ]
     },
     {
-        id: 11,
+        id: 12,
         title: "Q & P Keys",
         steps: [
             { type: 'instruction', text: "Reach up with your pinky fingers: Q (left) and P (right).", key: 'q', hand: 'left', finger: 'pinky' },
@@ -113,7 +123,7 @@ const lessons = [
         ]
     },
     {
-        id: 12,
+        id: 13,
         title: "T & Y Keys",
         steps: [
             { type: 'instruction', text: "Stretch your index fingers to reach T (left) and Y (right).", key: 't', hand: 'left', finger: 'index' },
@@ -123,7 +133,7 @@ const lessons = [
         ]
     },
     {
-        id: 13,
+        id: 14,
         title: "Top Row Complete",
         steps: [
             { type: 'practice', text: "qwertyuiop" },
@@ -133,7 +143,7 @@ const lessons = [
         ]
     },
     {
-        id: 14,
+        id: 15,
         title: "V & M Keys",
         steps: [
             { type: 'instruction', text: "Reach down with your index fingers: V (left) and M (right).", key: 'v', hand: 'left', finger: 'index' },
@@ -143,7 +153,7 @@ const lessons = [
         ]
     },
     {
-        id: 15,
+        id: 16,
         title: "C & , Keys",
         steps: [
             { type: 'instruction', text: "Reach down with your middle fingers: C (left) and , (right).", key: 'c', hand: 'left', finger: 'middle' },
@@ -153,7 +163,7 @@ const lessons = [
         ]
     },
     {
-        id: 16,
+        id: 17,
         title: "X & . Keys",
         steps: [
             { type: 'instruction', text: "Reach down with your ring fingers: X (left) and . (right).", key: 'x', hand: 'left', finger: 'ring' },
@@ -163,7 +173,7 @@ const lessons = [
         ]
     },
     {
-        id: 17,
+        id: 18,
         title: "Z & / Keys",
         steps: [
             { type: 'instruction', text: "Reach down with your pinky fingers: Z (left) and / (right).", key: 'z', hand: 'left', finger: 'pinky' },
@@ -173,7 +183,7 @@ const lessons = [
         ]
     },
     {
-        id: 18,
+        id: 19,
         title: "B & N Keys",
         steps: [
             { type: 'instruction', text: "Stretch your index fingers down to reach B (left) and N (right).", key: 'b', hand: 'left', finger: 'index' },
@@ -183,7 +193,7 @@ const lessons = [
         ]
     },
     {
-        id: 19,
+        id: 20,
         title: "Bottom Row Complete",
         steps: [
             { type: 'practice', text: "zxcvbnm,./" },
@@ -192,8 +202,8 @@ const lessons = [
             { type: 'practice', text: "zip zap zoo" }
         ]
     },
-{
-        id: 20,
+    {
+        id: 21,
         title: "Full Keyboard Practice",
         steps: [
             { type: 'practice', text: "the quick brown fox jumps over the lazy dog" },
@@ -203,7 +213,7 @@ const lessons = [
         ]
     },
     {
-        id: 21,
+        id: 22,
         title: "Paragraph Practice 1",
         steps: [
             { type: 'practice', text: "The quick brown fox jumps over the lazy dog." },
@@ -212,7 +222,7 @@ const lessons = [
         ]
     },
     {
-        id: 22,
+        id: 23,
         title: "Paragraph Practice 2",
         steps: [
             { type: 'practice', text: "The sun rises in the east and sets in the west." },
@@ -221,7 +231,7 @@ const lessons = [
         ]
     },
     {
-        id: 23,
+        id: 24,
         title: "Short Stories",
         steps: [
             { type: 'practice', text: "Once upon a time, there was a small village by the sea." },
@@ -230,7 +240,7 @@ const lessons = [
         ]
     },
     {
-        id: 24,
+        id: 25,
         title: "Daily Practice",
         steps: [
             { type: 'practice', text: "Today is a good day to practice typing skills." },
@@ -240,7 +250,7 @@ const lessons = [
         ]
     },
     {
-        id: 25,
+        id: 26,
         title: "Numbers 1-5",
         steps: [
             { type: 'practice', text: "111 222 333 444 555" },
@@ -249,7 +259,7 @@ const lessons = [
         ]
     },
     {
-        id: 26,
+        id: 27,
         title: "Numbers 6-0",
         steps: [
             { type: 'practice', text: "666 777 888 999 000" },
@@ -258,7 +268,7 @@ const lessons = [
         ]
     },
     {
-        id: 27,
+        id: 28,
         title: "Full Number Practice",
         steps: [
             { type: 'practice', text: "1234567890 0987654321" },
@@ -267,7 +277,7 @@ const lessons = [
         ]
     },
     {
-        id: 28,
+        id: 29,
         title: "Basic Punctuation",
         steps: [
             { type: 'practice', text: "Hello, how are you?" },
@@ -276,7 +286,7 @@ const lessons = [
         ]
     },
     {
-        id: 29,
+        id: 30,
         title: "Email & Web",
         steps: [
             { type: 'practice', text: "user@email.com" },
@@ -285,7 +295,7 @@ const lessons = [
         ]
     },
     {
-        id: 30,
+        id: 31,
         title: "Common Words 1",
         steps: [
             { type: 'practice', text: "the and for you that with this" },
@@ -294,7 +304,7 @@ const lessons = [
         ]
     },
     {
-        id: 31,
+        id: 32,
         title: "Common Words 2",
         steps: [
             { type: 'practice', text: "about know than call find give" },
@@ -303,7 +313,7 @@ const lessons = [
         ]
     },
     {
-        id: 32,
+        id: 33,
         title: "Greetings",
         steps: [
             { type: 'practice', text: "Hello! How are you today?" },
@@ -312,7 +322,7 @@ const lessons = [
         ]
     },
     {
-        id: 33,
+        id: 34,
         title: "Questions",
         steps: [
             { type: 'practice', text: "What is your name?" },
@@ -321,7 +331,7 @@ const lessons = [
         ]
     },
     {
-        id: 34,
+        id: 35,
         title: "Short Answers",
         steps: [
             { type: 'practice', text: "Yes, I agree." },
@@ -330,7 +340,7 @@ const lessons = [
         ]
     },
     {
-        id: 35,
+        id: 36,
         title: "Days of Week",
         steps: [
             { type: 'practice', text: "Monday Tuesday Wednesday" },
@@ -339,7 +349,7 @@ const lessons = [
         ]
     },
     {
-        id: 36,
+        id: 37,
         title: "Months",
         steps: [
             { type: 'practice', text: "January February March April" },
@@ -348,7 +358,7 @@ const lessons = [
         ]
     },
     {
-        id: 37,
+        id: 38,
         title: "Colors",
         steps: [
             { type: 'practice', text: "red blue green yellow orange" },
@@ -357,7 +367,7 @@ const lessons = [
         ]
     },
     {
-        id: 38,
+        id: 39,
         title: "Food Words",
         steps: [
             { type: 'practice', text: "apple banana orange grape" },
@@ -366,7 +376,7 @@ const lessons = [
         ]
     },
     {
-        id: 39,
+        id: 40,
         title: "Animals",
         steps: [
             { type: 'practice', text: "dog cat bird fish horse" },
@@ -375,7 +385,7 @@ const lessons = [
         ]
     },
     {
-        id: 40,
+        id: 41,
         title: "Family Words",
         steps: [
             { type: 'practice', text: "mother father sister brother" },
@@ -384,7 +394,7 @@ const lessons = [
         ]
     },
     {
-        id: 41,
+        id: 42,
         title: "Weather",
         steps: [
             { type: 'practice', text: "sunny cloudy rainy windy snowy" },
@@ -393,7 +403,7 @@ const lessons = [
         ]
     },
     {
-        id: 42,
+        id: 43,
         title: "Office Terms",
         steps: [
             { type: 'practice', text: "meeting report deadline project" },
@@ -402,7 +412,7 @@ const lessons = [
         ]
     },
     {
-        id: 43,
+        id: 44,
         title: "Travel Words",
         steps: [
             { type: 'practice', text: "airport hotel ticket passport" },
@@ -411,7 +421,7 @@ const lessons = [
         ]
     },
     {
-        id: 44,
+        id: 45,
         title: "Technology",
         steps: [
             { type: 'practice', text: "computer mouse keyboard screen" },
@@ -420,7 +430,7 @@ const lessons = [
         ]
     },
     {
-        id: 45,
+        id: 46,
         title: "Education",
         steps: [
             { type: 'practice', text: "school teacher student homework" },
@@ -429,7 +439,7 @@ const lessons = [
         ]
     },
     {
-        id: 46,
+        id: 47,
         title: "Sports",
         steps: [
             { type: 'practice', text: "football basketball tennis soccer" },
@@ -438,7 +448,7 @@ const lessons = [
         ]
     },
     {
-        id: 47,
+        id: 48,
         title: "Shopping",
         steps: [
             { type: 'practice', text: "store shop buy sell price" },
@@ -447,7 +457,7 @@ const lessons = [
         ]
     },
     {
-        id: 48,
+        id: 49,
         title: "Cooking",
         steps: [
             { type: 'practice', text: "cook bake fry boil mix" },
@@ -456,7 +466,7 @@ const lessons = [
         ]
     },
     {
-        id: 49,
+        id: 50,
         title: "Health",
         steps: [
             { type: 'practice', text: "doctor hospital medicine healthy" },
@@ -465,7 +475,7 @@ const lessons = [
         ]
     },
     {
-        id: 50,
+        id: 51,
         title: "Nature",
         steps: [
             { type: 'practice', text: "tree flower garden forest mountain" },
@@ -474,7 +484,7 @@ const lessons = [
         ]
     },
     {
-        id: 51,
+        id: 52,
         title: "Time Expressions",
         steps: [
             { type: 'practice', text: "today tomorrow yesterday now" },
@@ -483,7 +493,7 @@ const lessons = [
         ]
     },
     {
-        id: 52,
+        id: 53,
         title: "Directions",
         steps: [
             { type: 'practice', text: "left right forward backward" },
@@ -492,7 +502,7 @@ const lessons = [
         ]
     },
     {
-        id: 53,
+        id: 54,
         title: "Emotions",
         steps: [
             { type: 'practice', text: "happy sad angry excited worried" },
@@ -501,7 +511,7 @@ const lessons = [
         ]
     },
     {
-        id: 54,
+        id: 55,
         title: "Actions",
         steps: [
             { type: 'practice', text: "walk run jump sit stand" },
@@ -510,7 +520,7 @@ const lessons = [
         ]
     },
     {
-        id: 55,
+        id: 56,
         title: "Descriptions",
         steps: [
             { type: 'practice', text: "big small tall short wide" },
@@ -519,7 +529,7 @@ const lessons = [
         ]
     },
     {
-        id: 56,
+        id: 57,
         title: "Social Media",
         steps: [
             { type: 'practice', text: "post like share comment follow" },
@@ -528,7 +538,7 @@ const lessons = [
         ]
     },
     {
-        id: 57,
+        id: 58,
         title: "Music",
         steps: [
             { type: 'practice', text: "song music play listen dance" },
@@ -537,7 +547,7 @@ const lessons = [
         ]
     },
     {
-        id: 58,
+        id: 59,
         title: "Books & Reading",
         steps: [
             { type: 'practice', text: "book novel story chapter page" },
@@ -546,7 +556,7 @@ const lessons = [
         ]
     },
     {
-        id: 59,
+        id: 60,
         title: "Movies & TV",
         steps: [
             { type: 'practice', text: "movie film show series episode" },
@@ -555,7 +565,7 @@ const lessons = [
         ]
     },
     {
-        id: 60,
+        id: 61,
         title: "Hobbies",
         steps: [
             { type: 'practice', text: "hobby painting drawing photography" },
@@ -564,7 +574,7 @@ const lessons = [
         ]
     },
     {
-        id: 61,
+        id: 62,
         title: "Relationships",
         steps: [
             { type: 'practice', text: "friend friendship love trust respect" },
@@ -573,7 +583,7 @@ const lessons = [
         ]
     },
     {
-        id: 62,
+        id: 63,
         title: "Work & Career",
         steps: [
             { type: 'practice', text: "job work career professional" },
@@ -582,7 +592,7 @@ const lessons = [
         ]
     },
     {
-        id: 63,
+        id: 64,
         title: "Money & Finance",
         steps: [
             { type: 'practice', text: "money budget save invest spend" },
@@ -591,7 +601,7 @@ const lessons = [
         ]
     },
     {
-        id: 64,
+        id: 65,
         title: "Geography",
         steps: [
             { type: 'practice', text: "country city town village capital" },
@@ -600,7 +610,7 @@ const lessons = [
         ]
     },
     {
-        id: 65,
+        id: 66,
         title: "Science",
         steps: [
             { type: 'practice', text: "experiment research discover study" },
@@ -609,7 +619,7 @@ const lessons = [
         ]
     },
     {
-        id: 66,
+        id: 67,
         title: "History",
         steps: [
             { type: 'practice', text: "history past ancient modern century" },
@@ -618,7 +628,7 @@ const lessons = [
         ]
     },
     {
-        id: 67,
+        id: 68,
         title: "Art",
         steps: [
             { type: 'practice', text: "art paint draw sketch color" },
@@ -627,7 +637,7 @@ const lessons = [
         ]
     },
     {
-        id: 68,
+        id: 69,
         title: "Religion & Culture",
         steps: [
             { type: 'practice', text: "culture tradition festival celebrate" },
@@ -636,7 +646,7 @@ const lessons = [
         ]
     },
     {
-        id: 69,
+        id: 70,
         title: "Law & Government",
         steps: [
             { type: 'practice', text: "law rule government president" },
@@ -645,7 +655,7 @@ const lessons = [
         ]
     },
     {
-        id: 70,
+        id: 71,
         title: "Environment",
         steps: [
             { type: 'practice', text: "environment nature pollution climate" },
@@ -654,7 +664,7 @@ const lessons = [
         ]
     },
     {
-        id: 71,
+        id: 72,
         title: "Motivational Quotes",
         steps: [
             { type: 'practice', text: "Believe in yourself and you will succeed." },
@@ -663,7 +673,7 @@ const lessons = [
         ]
     },
     {
-        id: 72,
+        id: 73,
         title: "Famous Sayings",
         steps: [
             { type: 'practice', text: "Knowledge is power." },
@@ -672,7 +682,7 @@ const lessons = [
         ]
     },
     {
-        id: 73,
+        id: 74,
         title: "Business Email",
         steps: [
             { type: 'practice', text: "Dear Sir or Madam," },
@@ -682,7 +692,7 @@ const lessons = [
         ]
     },
     {
-        id: 74,
+        id: 75,
         title: "Speed Master",
         steps: [
             { type: 'practice', text: "Type as fast as you can without mistakes." },
@@ -820,10 +830,32 @@ function showLessonComplete() {
     isTyping = false;
     const stats = calculateStats();
 
+    // Save stats to sessionStorage
+    saveLessonHistory(currentLessonId, stats.wpm, stats.accuracy, mistakes);
+
+    // Get username
+    const userName = sessionStorage.getItem('userName') || 'Guest';
+
+    // Generate compliment based on performance
+    let compliment = '';
+    if (stats.accuracy >= 95 && stats.wpm >= 40) {
+        compliment = `Outstanding, ${userName}! You're a typing master! 🌟`;
+    } else if (stats.accuracy >= 90 && stats.wpm >= 30) {
+        compliment = `Excellent work, ${userName}! Keep it up! 🎯`;
+    } else if (stats.accuracy >= 80) {
+        compliment = `Great job, ${userName}! You're improving! 👏`;
+    } else if (stats.accuracy >= 70) {
+        compliment = `Good effort, ${userName}! Practice makes perfect! 💪`;
+    } else {
+        compliment = `Nice try, ${userName}! You'll get better with practice! 🚀`;
+    }
+
     instructionText.style.display = 'block';
     typingArea.style.display = 'none';
     instructionText.innerHTML = `
-        <div style="font-size: 2rem; color: var(--success-color); margin-bottom: 20px;">Lesson Complete!</div>
+        <div style="font-size: 2rem; color: var(--success-color); margin-bottom: 10px;">Lesson ${currentLessonId} Complete!</div>
+        
+        <div style="font-size: 1.2rem; color: var(--primary-color); margin-bottom: 30px; font-weight: 500;">${compliment}</div>
         
         <div style="display: flex; justify-content: center; gap: 40px; margin-bottom: 30px;">
             <div style="text-align: center;">
@@ -840,9 +872,49 @@ function showLessonComplete() {
             </div>
         </div>
 
-        <button onclick="window.location.href='../index.html'" class="nav-btn" style="margin-top: 20px;">Back to Menu</button>
+        <button onclick="window.location.href='../lessons.html'" class="nav-btn" style="margin-top: 20px;">Back to Menu</button>
         <button onclick="nextLesson()" class="nav-btn" style="margin-top: 20px; background: var(--primary-color); color: white;">Next Lesson</button>
     `;
+}
+
+// Save lesson history to sessionStorage
+function saveLessonHistory(lessonId, wpm, accuracy, mistakes) {
+    let history = {};
+    try {
+        const stored = sessionStorage.getItem('lessonHistory');
+        if (stored) {
+            history = JSON.parse(stored);
+        }
+    } catch (e) {
+        console.error('Error reading lesson history:', e);
+    }
+
+    history[lessonId] = {
+        wpm: wpm,
+        accuracy: accuracy,
+        mistakes: mistakes,
+        date: new Date().toISOString()
+    };
+
+    try {
+        sessionStorage.setItem('lessonHistory', JSON.stringify(history));
+    } catch (e) {
+        console.error('Error saving lesson history:', e);
+    }
+}
+
+// Get lesson history from sessionStorage
+function getLessonHistory(lessonId) {
+    try {
+        const stored = sessionStorage.getItem('lessonHistory');
+        if (stored) {
+            const history = JSON.parse(stored);
+            return history[lessonId] || null;
+        }
+    } catch (e) {
+        console.error('Error reading lesson history:', e);
+    }
+    return null;
 }
 
 function nextLesson() {
