@@ -867,8 +867,18 @@ function renderTypingArea() {
 }
 
 function handleInput(e) {
+    // Keyboard Navigation
+    if (e.key === 'Enter') {
+        skipStep();
+        return;
+    }
+    if (e.key === 'Shift') {
+        previousStep();
+        return;
+    }
+
     if (!isTyping) return;
-    if (['Shift', 'Control', 'Alt', 'CapsLock', 'Tab'].includes(e.key)) return;
+    if (['Control', 'Alt', 'CapsLock', 'Tab'].includes(e.key)) return;
 
     if (!startTime) startTime = new Date();
     totalKeystrokes++;
