@@ -22,72 +22,178 @@ const lessons = [
             { type: 'practice', text: "jfjf fjfj fff jjj" }
         ]
     },
-    {
+        {
         id: 3,
         title: "D & K Keys",
         steps: [
-            { type: 'instruction', text: "Type the d key using your left middle finger.", key: 'd', hand: 'left', finger: 'middle' },
+            { type: 'instruction', text: "Type the d key (left middle) and k key (right middle).", key: 'd', hand: 'left', finger: 'middle' },
             { type: 'practice', text: "dddd kkkk" },
-            { type: 'instruction', text: "Type the k key using your right middle finger.", key: 'k', hand: 'right', finger: 'middle' },
-            { type: 'practice', text: "kkkk dddd" },
-            { type: 'practice', text: "ddkk kkdd ddkk kkdd" },
-            { type: 'practice', text: "dkdk kdkd dkdk kdkd" },
-            { type: 'practice', text: "dad kad fad jak" } // Simple words
+            { type: 'practice', text: "dkdk kdkd" },
+            { type: 'practice', text: "ddkk kkdd" }
         ]
     },
     {
         id: 4,
         title: "S & L Keys",
         steps: [
-            { type: 'instruction', text: "Type the s key using your left ring finger.", key: 's', hand: 'left', finger: 'ring' },
+            { type: 'instruction', text: "Type the s key (left ring) and l key (right ring).", key: 's', hand: 'left', finger: 'ring' },
             { type: 'practice', text: "ssss llll" },
-            { type: 'instruction', text: "Type the l key using your right ring finger.", key: 'l', hand: 'right', finger: 'ring' },
-            { type: 'practice', text: "llll ssss" },
-            { type: 'practice', text: "ssll llss ssll llss" },
-            { type: 'practice', text: "slsl lsls slsl lsls" },
-            { type: 'practice', text: "sad lad lass sals" },
-            { type: 'practice', text: "dad has a salad" } // Sentence
+            { type: 'practice', text: "slsl lsls" },
+            { type: 'practice', text: "ssll llss" }
         ]
     },
     {
         id: 5,
-        title: "Home Row Review",
+        title: "A & ; Keys",
         steps: [
-            { type: 'practice', text: "asdf jkl;" },
-            { type: 'practice', text: "fdsa ;lkj" },
-            { type: 'practice', text: "dad has a lad" },
-            { type: 'practice', text: "ask for a flask" },
-            { type: 'practice', text: "a sad lad falls" },
-            { type: 'practice', text: "all dads had a salad" }
+            { type: 'instruction', text: "Type the a key (left pinky) and ; key (right pinky).", key: 'a', hand: 'left', finger: 'pinky' },
+            { type: 'practice', text: "aaaa ;;;;" },
+            { type: 'practice', text: "a;a; ;a;a" },
+            { type: 'practice', text: "aa;; ;;aa" }
         ]
     },
     {
         id: 6,
-        title: "Top Row (QWERTYUIOP)",
+        title: "G & H Keys",
         steps: [
-            { type: 'instruction', text: "Type the r and u keys.", key: 'r', hand: 'left', finger: 'index' },
-            { type: 'practice', text: "frfr juju frfr juju" },
-            { type: 'instruction', text: "Type the e and i keys.", key: 'e', hand: 'left', finger: 'middle' },
-            { type: 'practice', text: "dede kiki dede kiki" },
-            { type: 'practice', text: "red kite" },
-            { type: 'practice', text: "quit power" },
-            { type: 'practice', text: "try to read the tree top" }
+            { type: 'instruction', text: "Reach with your index fingers to type g (left) and h (right).", key: 'g', hand: 'left', finger: 'index' },
+            { type: 'practice', text: "gggg hhhh" },
+            { type: 'practice', text: "ghgh hghg" },
+            { type: 'practice', text: "fghj jhgf" }
         ]
     },
     {
         id: 7,
-        title: "Bottom Row (ZXCVBNM)",
+        title: "Home Row Complete",
         steps: [
-            { type: 'instruction', text: "Type the v and m keys.", key: 'v', hand: 'left', finger: 'index' },
-            { type: 'practice', text: "fvfv jmjm fvfv jmjm" },
-            { type: 'practice', text: "van man" },
-            { type: 'practice', text: "zxc vbn m,." },
-            { type: 'practice', text: "can you move the van" },
-            { type: 'practice', text: "mix the vat of jam" }
+            { type: 'practice', text: "asdfghjkl;" },
+            { type: 'practice', text: "dad has a salad" },
+            { type: 'practice', text: "ask a sad lad" },
+            { type: 'practice', text: "all fall" }
         ]
     },
     {
         id: 8,
+        title: "R & U Keys",
+        steps: [
+            { type: 'instruction', text: "Reach up with your index fingers: R (left) and U (right).", key: 'r', hand: 'left', finger: 'index' },
+            { type: 'practice', text: "rrrr uuuu" },
+            { type: 'practice', text: "ruru urur" },
+            { type: 'practice', text: "run rug urn" }
+        ]
+    },
+    {
+        id: 9,
+        title: "E & I Keys",
+        steps: [
+            { type: 'instruction', text: "Reach up with your middle fingers: E (left) and I (right).", key: 'e', hand: 'left', finger: 'middle' },
+            { type: 'practice', text: "eeee iiii" },
+            { type: 'practice', text: "eiei ieie" },
+            { type: 'practice', text: "did kid lie" }
+        ]
+    },
+    {
+        id: 10,
+        title: "W & O Keys",
+        steps: [
+            { type: 'instruction', text: "Reach up with your ring fingers: W (left) and O (right).", key: 'w', hand: 'left', finger: 'ring' },
+            { type: 'practice', text: "wwww oooo" },
+            { type: 'practice', text: "wowo owow" },
+            { type: 'practice', text: "wow owl low" }
+        ]
+    },
+    {
+        id: 11,
+        title: "Q & P Keys",
+        steps: [
+            { type: 'instruction', text: "Reach up with your pinky fingers: Q (left) and P (right).", key: 'q', hand: 'left', finger: 'pinky' },
+            { type: 'practice', text: "qqqq pppp" },
+            { type: 'practice', text: "qpqp pqpq" },
+            { type: 'practice', text: "quit pop up" }
+        ]
+    },
+    {
+        id: 12,
+        title: "T & Y Keys",
+        steps: [
+            { type: 'instruction', text: "Stretch your index fingers to reach T (left) and Y (right).", key: 't', hand: 'left', finger: 'index' },
+            { type: 'practice', text: "tttt yyyy" },
+            { type: 'practice', text: "tyty ytyt" },
+            { type: 'practice', text: "try toy yet" }
+        ]
+    },
+    {
+        id: 13,
+        title: "Top Row Complete",
+        steps: [
+            { type: 'practice', text: "qwertyuiop" },
+            { type: 'practice', text: "poiuytrewq" },
+            { type: 'practice', text: "the quick brown fox" },
+            { type: 'practice', text: "write your report" }
+        ]
+    },
+    {
+        id: 14,
+        title: "V & M Keys",
+        steps: [
+            { type: 'instruction', text: "Reach down with your index fingers: V (left) and M (right).", key: 'v', hand: 'left', finger: 'index' },
+            { type: 'practice', text: "vvvv mmmm" },
+            { type: 'practice', text: "vmvm mvmv" },
+            { type: 'practice', text: "van man mom" }
+        ]
+    },
+    {
+        id: 15,
+        title: "C & , Keys",
+        steps: [
+            { type: 'instruction', text: "Reach down with your middle fingers: C (left) and , (right).", key: 'c', hand: 'left', finger: 'middle' },
+            { type: 'practice', text: "cccc ,,,," },
+            { type: 'practice', text: "c,c, ,c,c" },
+            { type: 'practice', text: "car, cat, cut," }
+        ]
+    },
+    {
+        id: 16,
+        title: "X & . Keys",
+        steps: [
+            { type: 'instruction', text: "Reach down with your ring fingers: X (left) and . (right).", key: 'x', hand: 'left', finger: 'ring' },
+            { type: 'practice', text: "xxxx ...." },
+            { type: 'practice', text: "x.x. .x.x" },
+            { type: 'practice', text: "six. box. fox." }
+        ]
+    },
+    {
+        id: 17,
+        title: "Z & / Keys",
+        steps: [
+            { type: 'instruction', text: "Reach down with your pinky fingers: Z (left) and / (right).", key: 'z', hand: 'left', finger: 'pinky' },
+            { type: 'practice', text: "zzzz ////" },
+            { type: 'practice', text: "z/z/ /z/z" },
+            { type: 'practice', text: "zoo/ zip/ zap/" }
+        ]
+    },
+    {
+        id: 18,
+        title: "B & N Keys",
+        steps: [
+            { type: 'instruction', text: "Stretch your index fingers down to reach B (left) and N (right).", key: 'b', hand: 'left', finger: 'index' },
+            { type: 'practice', text: "bbbb nnnn" },
+            { type: 'practice', text: "bnbn nbnb" },
+            { type: 'practice', text: "ban bun nun" }
+        ]
+    },
+    {
+        id: 19,
+        title: "Bottom Row Complete",
+        steps: [
+            { type: 'practice', text: "zxcvbnm,./" },
+            { type: 'practice', text: "man can van" },
+            { type: 'practice', text: "mix six box" },
+            { type: 'practice', text: "zip zap zoo" }
+        ]
+    },
+{
+        id: 20,
         title: "Full Keyboard Practice",
         steps: [
             { type: 'practice', text: "the quick brown fox jumps over the lazy dog" },
@@ -97,7 +203,7 @@ const lessons = [
         ]
     },
     {
-        id: 9,
+        id: 21,
         title: "Paragraph Practice 1",
         steps: [
             { type: 'practice', text: "The quick brown fox jumps over the lazy dog." },
@@ -106,7 +212,7 @@ const lessons = [
         ]
     },
     {
-        id: 10,
+        id: 22,
         title: "Paragraph Practice 2",
         steps: [
             { type: 'practice', text: "The sun rises in the east and sets in the west." },
@@ -115,7 +221,7 @@ const lessons = [
         ]
     },
     {
-        id: 11,
+        id: 23,
         title: "Short Stories",
         steps: [
             { type: 'practice', text: "Once upon a time, there was a small village by the sea." },
@@ -124,7 +230,7 @@ const lessons = [
         ]
     },
     {
-        id: 12,
+        id: 24,
         title: "Daily Practice",
         steps: [
             { type: 'practice', text: "Today is a good day to practice typing skills." },
@@ -134,7 +240,7 @@ const lessons = [
         ]
     },
     {
-        id: 13,
+        id: 25,
         title: "Numbers 1-5",
         steps: [
             { type: 'practice', text: "111 222 333 444 555" },
@@ -143,7 +249,7 @@ const lessons = [
         ]
     },
     {
-        id: 14,
+        id: 26,
         title: "Numbers 6-0",
         steps: [
             { type: 'practice', text: "666 777 888 999 000" },
@@ -152,7 +258,7 @@ const lessons = [
         ]
     },
     {
-        id: 15,
+        id: 27,
         title: "Full Number Practice",
         steps: [
             { type: 'practice', text: "1234567890 0987654321" },
@@ -161,7 +267,7 @@ const lessons = [
         ]
     },
     {
-        id: 16,
+        id: 28,
         title: "Basic Punctuation",
         steps: [
             { type: 'practice', text: "Hello, how are you?" },
@@ -170,7 +276,7 @@ const lessons = [
         ]
     },
     {
-        id: 17,
+        id: 29,
         title: "Email & Web",
         steps: [
             { type: 'practice', text: "user@email.com" },
@@ -179,7 +285,7 @@ const lessons = [
         ]
     },
     {
-        id: 18,
+        id: 30,
         title: "Common Words 1",
         steps: [
             { type: 'practice', text: "the and for you that with this" },
@@ -188,7 +294,7 @@ const lessons = [
         ]
     },
     {
-        id: 19,
+        id: 31,
         title: "Common Words 2",
         steps: [
             { type: 'practice', text: "about know than call find give" },
@@ -197,7 +303,7 @@ const lessons = [
         ]
     },
     {
-        id: 20,
+        id: 32,
         title: "Greetings",
         steps: [
             { type: 'practice', text: "Hello! How are you today?" },
@@ -206,7 +312,7 @@ const lessons = [
         ]
     },
     {
-        id: 21,
+        id: 33,
         title: "Questions",
         steps: [
             { type: 'practice', text: "What is your name?" },
@@ -215,7 +321,7 @@ const lessons = [
         ]
     },
     {
-        id: 22,
+        id: 34,
         title: "Short Answers",
         steps: [
             { type: 'practice', text: "Yes, I agree." },
@@ -224,7 +330,7 @@ const lessons = [
         ]
     },
     {
-        id: 23,
+        id: 35,
         title: "Days of Week",
         steps: [
             { type: 'practice', text: "Monday Tuesday Wednesday" },
@@ -233,7 +339,7 @@ const lessons = [
         ]
     },
     {
-        id: 24,
+        id: 36,
         title: "Months",
         steps: [
             { type: 'practice', text: "January February March April" },
@@ -242,7 +348,7 @@ const lessons = [
         ]
     },
     {
-        id: 25,
+        id: 37,
         title: "Colors",
         steps: [
             { type: 'practice', text: "red blue green yellow orange" },
@@ -251,7 +357,7 @@ const lessons = [
         ]
     },
     {
-        id: 26,
+        id: 38,
         title: "Food Words",
         steps: [
             { type: 'practice', text: "apple banana orange grape" },
@@ -260,7 +366,7 @@ const lessons = [
         ]
     },
     {
-        id: 27,
+        id: 39,
         title: "Animals",
         steps: [
             { type: 'practice', text: "dog cat bird fish horse" },
@@ -269,7 +375,7 @@ const lessons = [
         ]
     },
     {
-        id: 28,
+        id: 40,
         title: "Family Words",
         steps: [
             { type: 'practice', text: "mother father sister brother" },
@@ -278,7 +384,7 @@ const lessons = [
         ]
     },
     {
-        id: 29,
+        id: 41,
         title: "Weather",
         steps: [
             { type: 'practice', text: "sunny cloudy rainy windy snowy" },
@@ -287,7 +393,7 @@ const lessons = [
         ]
     },
     {
-        id: 30,
+        id: 42,
         title: "Office Terms",
         steps: [
             { type: 'practice', text: "meeting report deadline project" },
@@ -296,7 +402,7 @@ const lessons = [
         ]
     },
     {
-        id: 31,
+        id: 43,
         title: "Travel Words",
         steps: [
             { type: 'practice', text: "airport hotel ticket passport" },
@@ -305,7 +411,7 @@ const lessons = [
         ]
     },
     {
-        id: 32,
+        id: 44,
         title: "Technology",
         steps: [
             { type: 'practice', text: "computer mouse keyboard screen" },
@@ -314,7 +420,7 @@ const lessons = [
         ]
     },
     {
-        id: 33,
+        id: 45,
         title: "Education",
         steps: [
             { type: 'practice', text: "school teacher student homework" },
@@ -323,7 +429,7 @@ const lessons = [
         ]
     },
     {
-        id: 34,
+        id: 46,
         title: "Sports",
         steps: [
             { type: 'practice', text: "football basketball tennis soccer" },
@@ -332,7 +438,7 @@ const lessons = [
         ]
     },
     {
-        id: 35,
+        id: 47,
         title: "Shopping",
         steps: [
             { type: 'practice', text: "store shop buy sell price" },
@@ -341,7 +447,7 @@ const lessons = [
         ]
     },
     {
-        id: 36,
+        id: 48,
         title: "Cooking",
         steps: [
             { type: 'practice', text: "cook bake fry boil mix" },
@@ -350,7 +456,7 @@ const lessons = [
         ]
     },
     {
-        id: 37,
+        id: 49,
         title: "Health",
         steps: [
             { type: 'practice', text: "doctor hospital medicine healthy" },
@@ -359,7 +465,7 @@ const lessons = [
         ]
     },
     {
-        id: 38,
+        id: 50,
         title: "Nature",
         steps: [
             { type: 'practice', text: "tree flower garden forest mountain" },
@@ -368,7 +474,7 @@ const lessons = [
         ]
     },
     {
-        id: 39,
+        id: 51,
         title: "Time Expressions",
         steps: [
             { type: 'practice', text: "today tomorrow yesterday now" },
@@ -377,7 +483,7 @@ const lessons = [
         ]
     },
     {
-        id: 40,
+        id: 52,
         title: "Directions",
         steps: [
             { type: 'practice', text: "left right forward backward" },
@@ -386,7 +492,7 @@ const lessons = [
         ]
     },
     {
-        id: 41,
+        id: 53,
         title: "Emotions",
         steps: [
             { type: 'practice', text: "happy sad angry excited worried" },
@@ -395,7 +501,7 @@ const lessons = [
         ]
     },
     {
-        id: 42,
+        id: 54,
         title: "Actions",
         steps: [
             { type: 'practice', text: "walk run jump sit stand" },
@@ -404,7 +510,7 @@ const lessons = [
         ]
     },
     {
-        id: 43,
+        id: 55,
         title: "Descriptions",
         steps: [
             { type: 'practice', text: "big small tall short wide" },
@@ -413,7 +519,7 @@ const lessons = [
         ]
     },
     {
-        id: 44,
+        id: 56,
         title: "Social Media",
         steps: [
             { type: 'practice', text: "post like share comment follow" },
@@ -422,7 +528,7 @@ const lessons = [
         ]
     },
     {
-        id: 45,
+        id: 57,
         title: "Music",
         steps: [
             { type: 'practice', text: "song music play listen dance" },
@@ -431,7 +537,7 @@ const lessons = [
         ]
     },
     {
-        id: 46,
+        id: 58,
         title: "Books & Reading",
         steps: [
             { type: 'practice', text: "book novel story chapter page" },
@@ -440,7 +546,7 @@ const lessons = [
         ]
     },
     {
-        id: 47,
+        id: 59,
         title: "Movies & TV",
         steps: [
             { type: 'practice', text: "movie film show series episode" },
@@ -449,7 +555,7 @@ const lessons = [
         ]
     },
     {
-        id: 48,
+        id: 60,
         title: "Hobbies",
         steps: [
             { type: 'practice', text: "hobby painting drawing photography" },
@@ -458,7 +564,7 @@ const lessons = [
         ]
     },
     {
-        id: 49,
+        id: 61,
         title: "Relationships",
         steps: [
             { type: 'practice', text: "friend friendship love trust respect" },
@@ -467,7 +573,7 @@ const lessons = [
         ]
     },
     {
-        id: 50,
+        id: 62,
         title: "Work & Career",
         steps: [
             { type: 'practice', text: "job work career professional" },
@@ -476,7 +582,7 @@ const lessons = [
         ]
     },
     {
-        id: 51,
+        id: 63,
         title: "Money & Finance",
         steps: [
             { type: 'practice', text: "money budget save invest spend" },
@@ -485,7 +591,7 @@ const lessons = [
         ]
     },
     {
-        id: 52,
+        id: 64,
         title: "Geography",
         steps: [
             { type: 'practice', text: "country city town village capital" },
@@ -494,7 +600,7 @@ const lessons = [
         ]
     },
     {
-        id: 53,
+        id: 65,
         title: "Science",
         steps: [
             { type: 'practice', text: "experiment research discover study" },
@@ -503,7 +609,7 @@ const lessons = [
         ]
     },
     {
-        id: 54,
+        id: 66,
         title: "History",
         steps: [
             { type: 'practice', text: "history past ancient modern century" },
@@ -512,7 +618,7 @@ const lessons = [
         ]
     },
     {
-        id: 55,
+        id: 67,
         title: "Art",
         steps: [
             { type: 'practice', text: "art paint draw sketch color" },
@@ -521,7 +627,7 @@ const lessons = [
         ]
     },
     {
-        id: 56,
+        id: 68,
         title: "Religion & Culture",
         steps: [
             { type: 'practice', text: "culture tradition festival celebrate" },
@@ -530,7 +636,7 @@ const lessons = [
         ]
     },
     {
-        id: 57,
+        id: 69,
         title: "Law & Government",
         steps: [
             { type: 'practice', text: "law rule government president" },
@@ -539,7 +645,7 @@ const lessons = [
         ]
     },
     {
-        id: 58,
+        id: 70,
         title: "Environment",
         steps: [
             { type: 'practice', text: "environment nature pollution climate" },
@@ -548,7 +654,7 @@ const lessons = [
         ]
     },
     {
-        id: 59,
+        id: 71,
         title: "Motivational Quotes",
         steps: [
             { type: 'practice', text: "Believe in yourself and you will succeed." },
@@ -557,7 +663,7 @@ const lessons = [
         ]
     },
     {
-        id: 60,
+        id: 72,
         title: "Famous Sayings",
         steps: [
             { type: 'practice', text: "Knowledge is power." },
@@ -566,7 +672,7 @@ const lessons = [
         ]
     },
     {
-        id: 61,
+        id: 73,
         title: "Business Email",
         steps: [
             { type: 'practice', text: "Dear Sir or Madam," },
@@ -576,7 +682,7 @@ const lessons = [
         ]
     },
     {
-        id: 62,
+        id: 74,
         title: "Speed Master",
         steps: [
             { type: 'practice', text: "Type as fast as you can without mistakes." },

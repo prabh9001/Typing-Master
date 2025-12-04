@@ -24,9 +24,9 @@ html_start = """<!DOCTYPE html>
 lessons = [
     (1, 'Introduction to Typing', 'Learn the home row keys F and J.'),
     (2, 'F & J Practice', ''),
-    (3, 'D & K Keys', ''),
-    (4, 'S & L Keys', ''),
-    (5, 'Home Row Review', ''),
+    (3, 'D, K & A Keys', ''),
+    (4, 'S, L & ; Keys', ''),
+    (5, 'Home Row Sentences', ''),
     (6, 'Top Row (QWERTY)', ''),
     (7, 'Bottom Row (ZXCV)', ''),
     (8, 'Full Keyboard', ''),
