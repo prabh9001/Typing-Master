@@ -1,5 +1,6 @@
 
-const lessons = [
+// Lessons data - use window.lessons if already set (for Hindi/Punjabi), otherwise default to English
+let lessons = window.lessons || [
     {
         id: 1,
         title: "Hand Positioning",
@@ -699,6 +700,34 @@ const lessons = [
             { type: 'practice', text: "Speed and accuracy go hand in hand." },
             { type: 'practice', text: "You have completed all lessons! Congratulations!" }
         ]
+    },
+    {
+        id: 76,
+        title: "100 Word Paragraph",
+        steps: [
+            { type: 'practice', text: "Technology has transformed the way we live and work in the modern world. The internet connects people from all over the globe, allowing instant communication and access to vast amounts of information. Smartphones have become essential tools for daily life, helping us navigate, shop, and stay in touch with friends and family. Education has also evolved significantly, with online courses making learning accessible to everyone regardless of their location. However, it is important to balance screen time with outdoor activities to maintain physical health. Nature offers a peaceful escape from the digital world, allowing us to recharge. Reading books, exercising, and spending quality time with loved ones are valuable ways to disconnect. Embracing technology while maintaining a healthy lifestyle is key to a balanced future." }
+        ]
+    },
+    {
+        id: 77,
+        title: "200 Word Paragraph",
+        steps: [
+            { type: 'practice', text: "The importance of environmental conservation cannot be overstated in today's rapidly changing world. Our planet provides us with essential resources like air, water, and food, which are the foundation of all life. However, human activities such as deforestation, industrial pollution, and overconsumption are threatening these vital resources. Climate change is a major global issue, leading to extreme weather events, rising sea levels, and the loss of biodiversity. It is crucial for individuals, communities, and governments to take immediate action to mitigate these effects. Recycling, reducing plastic waste, and transitioning to renewable energy sources like solar and wind power are effective ways to protect the environment. Planting trees and supporting wildlife conservation efforts also play a significant role in restoring ecological balance. Education is vital in raising awareness about environmental issues and inspiring the younger generation to become stewards of the earth. Schools and communities should promote sustainable practices such as composting and water conservation. Simple changes in our daily habits, such as using public transport, conserving electricity, and reducing food waste, can make a collective difference. We must act now to ensure a healthy and habitable planet for future generations. Protecting nature is not just a responsibility; it is a necessity for our survival." }
+        ]
+    },
+    {
+        id: 78,
+        title: "300 Word Paragraph",
+        steps: [
+            { type: 'practice', text: "Reading is one of the most beneficial habits a person can develop, offering a multitude of advantages for the mind and soul. It opens up new worlds and expands our understanding of life, allowing us to travel to distant lands, explore different cultures, and experience history without leaving our chairs. Reading improves vocabulary and language skills, making us better communicators and more articulate speakers. It also enhances concentration and focus, which are essential skills in today's fast-paced, distraction-filled world. Fiction books stimulate imagination and empathy, allowing us to step into the shoes of different characters and understand their emotions and perspectives. Non-fiction books provide valuable knowledge and insights into various subjects, from science and history to philosophy and self-improvement. In addition to mental benefits, reading is a great way to relax and reduce stress. Getting lost in a good story can be a wonderful escape from daily worries and a source of comfort. It is important to encourage children to read from a young age, as it fosters a lifelong love for learning and curiosity. Bedtime stories and regular visits to the library can create cherished memories and instill a reading habit. In the digital age, e-books and audiobooks have made reading more accessible and convenient than ever before. However, the tactile experience of holding a physical book and turning the pages remains special for many readers. Whether you prefer mystery, romance, science fiction, or biography, there is a book out there for everyone. Setting aside a few minutes each day to read can have a profound positive impact on your mental well-being. It keeps the brain active, healthy, and engaged. So, pick up a book today and start a new adventure. The knowledge, wisdom, and joy gained from reading are truly priceless treasures that stay with us forever." }
+        ]
+    },
+    {
+        id: 79,
+        title: "500 Word Paragraph",
+        steps: [
+            { type: 'practice', text: "Success is a multifaceted concept that means different things to different people. For some, it is measured by material wealth, professional achievements, and social status, while for others, it is defined by happiness, good health, and strong, loving relationships. Regardless of the personal definition, achieving success typically requires a combination of dedication, hard work, resilience, and a positive mindset. Setting clear, achievable goals is the first and most critical step towards success. When you have a clear vision of what you want to achieve, you can create a roadmap and take consistent, purposeful action. It is important to stay focused and motivated, even when facing inevitable challenges and setbacks. Failure is often an integral part of the journey to success, serving as a powerful teacher. Instead of being discouraged by failures, successful people view them as valuable learning opportunities and stepping stones to growth. Resilience and perseverance are key qualities that distinguish successful individuals. They do not give up easily and keep pushing forward despite obstacles and rejection. Continuous learning and self-improvement are also essential components of success. The world is constantly evolving, and acquiring new skills and knowledge helps you stay relevant, adaptable, and competitive. Networking and building strong professional relationships can open doors to new opportunities and collaborations. Surrounding yourself with supportive, positive, and inspiring people can boost your confidence and keep you motivated during difficult times. Time management is another crucial factor in achieving success. Prioritizing tasks, setting deadlines, and using time effectively allows you to be more productive and achieve more in less time. However, maintaining a healthy work-life balance is equally important to prevent burnout and ensure long-term well-being. Taking care of your physical and mental health ensures that you have the energy and clarity to pursue your goals with vigor. Success is not a destination but a continuous journey of growth and self-discovery. It is about striving to become the best version of yourself and making a positive impact on the world. Celebrating small victories along the way keeps you motivated and reinforces your progress. It is also important to practice gratitude and appreciate what you have while striving for more. Helping others and giving back to the community can bring a deep sense of fulfillment and purpose that material success alone cannot provide. True success is holistic, encompassing professional achievements, personal happiness, and contribution to society. Everyone has the potential to be successful in their own unique way. It starts with believing in yourself and your abilities. With passion, discipline, and determination, you can turn your dreams into reality. Remember that success is a personal journey, so define it on your own terms, stay true to your values, and enjoy the process of becoming the person you aspire to be. Your unique path to success is waiting for you to explore and conquer." }
+        ]
     }
 ];
 
@@ -711,6 +740,14 @@ let mistakes = 0;
 let isTyping = false;
 let startTime = null;
 let totalKeystrokes = 0;
+let lastKeystrokeTime = null;
+let activeTypingTime = 0; // Accumulated time in milliseconds when actively typing
+let statsUpdateInterval = null; // For real-time WPM updates
+
+// WPM Smoothing variables
+let smoothedWPM = 0; // Current smoothed WPM value
+let rawWPM = 0; // Current raw WPM calculation
+const WPM_SMOOTHING_FACTOR = 0.15; // Lower = more stable, Higher = more responsive (0.1-0.3 recommended)
 
 // DOM Elements
 const gameArea = document.getElementById('game-area');
@@ -729,7 +766,12 @@ function initGame() {
     const urlParams = new URLSearchParams(window.location.search);
     const lessonParam = urlParams.get('lesson');
     if (lessonParam) {
-        currentLessonId = parseInt(lessonParam);
+        // Support both numeric and string IDs (for Hindi/Punjabi lessons)
+        if (isNaN(lessonParam)) {
+            currentLessonId = lessonParam; // String ID like 'hindi_1'
+        } else {
+            currentLessonId = parseInt(lessonParam); // Numeric ID like 1
+        }
     }
 
     loadLesson(currentLessonId);
@@ -740,6 +782,7 @@ function initGame() {
 
     renderKeyboard();
 }
+
 
 function loadLesson(id) {
     currentLesson = lessons.find(l => l.id === id);
@@ -764,7 +807,22 @@ function loadStep() {
     const step = currentLesson.steps[currentStepIndex];
     currentIndex = 0;
     startTime = null;
+    lastKeystrokeTime = null;
+    activeTypingTime = 0;
     isTyping = true;
+
+    // Reset WPM smoothing for new step
+    smoothedWPM = 0;
+    rawWPM = 0;
+
+    // Clear any existing interval
+    if (statsUpdateInterval) {
+        clearInterval(statsUpdateInterval);
+    }
+
+    // Start real-time stats update (updates every 100ms)
+    statsUpdateInterval = setInterval(updateStatsDisplay, 100);
+
     updateStatsDisplay();
 
     // Reset UI
@@ -808,14 +866,52 @@ function skipStep() {
 function calculateStats() {
     if (!startTime) return { wpm: 0, accuracy: 100 };
 
-    const timeInMinutes = (new Date() - startTime) / 60000;
-    const wpm = Math.round((currentIndex / 5) / timeInMinutes) || 0;
+    const now = new Date();
+    let effectiveTypingTime = activeTypingTime; // Start with accumulated active typing time
 
-    const accuracy = totalKeystrokes > 0
-        ? Math.round(((totalKeystrokes - mistakes) / totalKeystrokes) * 100)
+    // If user is currently in a gap (not typing), add the current idle time
+    // This makes WPM decrease in real-time when user stops
+    if (lastKeystrokeTime) {
+        const timeSinceLastKeystroke = now - lastKeystrokeTime;
+        const maxGapBeforePenalty = 2000; // 2 seconds grace period
+
+        // Add idle time beyond grace period to effective typing time
+        // This increases the denominator, reducing WPM
+        if (timeSinceLastKeystroke > maxGapBeforePenalty) {
+            effectiveTypingTime += timeSinceLastKeystroke;
+        } else {
+            // Within grace period, only add the actual time elapsed
+            effectiveTypingTime += timeSinceLastKeystroke;
+        }
+    }
+
+    // Calculate WPM based on TOTAL characters typed (not just correct ones)
+    // Formula: WPM = (Total characters typed / 5) ÷ Time in minutes
+    const timeInMinutes = effectiveTypingTime / 60000;
+
+    // Use currentIndex which represents total characters typed
+    rawWPM = timeInMinutes > 0
+        ? Math.round((currentIndex / 5) / timeInMinutes)
+        : 0;
+
+    // Apply exponential smoothing to WPM for stability
+    // Formula: smoothed = (alpha * raw) + ((1 - alpha) * previousSmoothed)
+    // This prevents wild fluctuations while still being responsive
+    if (smoothedWPM === 0) {
+        // First calculation, use raw value
+        smoothedWPM = rawWPM;
+    } else {
+        // Apply smoothing
+        smoothedWPM = (WPM_SMOOTHING_FACTOR * rawWPM) + ((1 - WPM_SMOOTHING_FACTOR) * smoothedWPM);
+    }
+
+    // Calculate accuracy based on correct vs total characters attempted
+    // This is more accurate than keystroke-based calculation
+    const accuracy = currentIndex > 0
+        ? Math.round(((currentIndex - mistakes) / currentIndex) * 100)
         : 100;
 
-    return { wpm, accuracy };
+    return { wpm: Math.max(0, Math.round(smoothedWPM)), accuracy: Math.max(0, accuracy) };
 }
 
 function updateStatsDisplay() {
@@ -828,6 +924,13 @@ function updateStatsDisplay() {
 
 function showLessonComplete() {
     isTyping = false;
+
+    // Clear the stats update interval
+    if (statsUpdateInterval) {
+        clearInterval(statsUpdateInterval);
+        statsUpdateInterval = null;
+    }
+
     const stats = calculateStats();
 
     // Save stats to sessionStorage
@@ -872,7 +975,7 @@ function showLessonComplete() {
             </div>
         </div>
 
-        <button onclick="window.location.href='../lessons.html'" class="nav-btn" style="margin-top: 20px;">Back to Menu</button>
+        <button onclick="goBackToLessons()" class="nav-btn" style="margin-top: 20px;">Back to Menu</button>
         <button onclick="nextLesson()" class="nav-btn" style="margin-top: 20px; background: var(--primary-color); color: white;">Next Lesson</button>
     `;
 }
@@ -918,7 +1021,21 @@ function getLessonHistory(lessonId) {
 }
 
 function nextLesson() {
-    const nextId = currentLessonId + 1;
+    // Handle both numeric and string IDs (for Hindi/Punjabi)
+    let nextId;
+    if (typeof currentLessonId === 'string') {
+        // For Hindi/Punjabi: extract number and increment
+        const match = currentLessonId.match(/(\w+)_(\d+)/);
+        if (match) {
+            const prefix = match[1]; // 'hindi' or 'punjabi'
+            const num = parseInt(match[2]);
+            nextId = `${prefix}_${num + 1}`;
+        }
+    } else {
+        // For English: simple increment
+        nextId = currentLessonId + 1;
+    }
+
     const nextLessonExists = lessons.find(l => l.id === nextId);
     if (nextLessonExists) {
         currentLessonId = nextId;
@@ -928,9 +1045,24 @@ function nextLesson() {
         loadLesson(nextId);
     } else {
         alert("You have completed all available lessons!");
-        window.location.href = "../index.html";
+        goBackToLessons();
     }
 }
+
+function goBackToLessons() {
+    // Determine which lessons page to return to based on current lesson ID
+    const urlParams = new URLSearchParams(window.location.search);
+    const language = urlParams.get('lang') || 'english';
+
+    if (language === 'hindi') {
+        window.location.href = '../lessons_hindi.html';
+    } else if (language === 'punjabi') {
+        window.location.href = '../lessons_punjabi.html';
+    } else {
+        window.location.href = '../lessons.html';
+    }
+}
+
 
 // Header Controls
 const settingsBtn = document.querySelector('.header-controls .icon-btn:nth-child(1)'); // Updated since Home button removed
@@ -1006,7 +1138,25 @@ function handleInput(e) {
     if (!isTyping) return;
     if (['Control', 'Alt', 'CapsLock', 'Tab'].includes(e.key)) return;
 
-    if (!startTime) startTime = new Date();
+    const now = new Date();
+
+    // Initialize start time on first keystroke
+    if (!startTime) {
+        startTime = now;
+        lastKeystrokeTime = now;
+    } else if (lastKeystrokeTime) {
+        // Calculate time since last keystroke
+        const timeSinceLastKey = now - lastKeystrokeTime;
+
+        // Only add time to active typing if gap is reasonable (max 2 seconds)
+        // This prevents long pauses from being counted as active typing time
+        const maxGapToCount = 2000; // 2 seconds
+        const timeToAdd = Math.min(timeSinceLastKey, maxGapToCount);
+
+        activeTypingTime += timeToAdd;
+        lastKeystrokeTime = now;
+    }
+
     totalKeystrokes++;
 
     const targetChar = currentText[currentIndex];
@@ -1055,6 +1205,7 @@ function handleInput(e) {
     }
 }
 
+// Keyboard layouts for different languages
 const keyboardLayout = [
     ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace'],
     ['Tab', 'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\'],
@@ -1063,11 +1214,41 @@ const keyboardLayout = [
     ['Space']
 ];
 
+// Hindi (Devanagari) keyboard layout - Inscript
+const hindiKeyboardLayout = [
+    ['~', '१', '२', '३', '४', '५', '६', '७', '८', '९', '०', '-', 'ृ', 'Backspace'],
+    ['Tab', 'ौ', 'ै', 'ा', 'ी', 'ू', 'ब', 'ह', 'ग', 'द', 'ज', 'ड', '़', '\\'],
+    ['Caps', 'ो', 'े', '्', 'ि', 'ु', 'प', 'र', 'क', 'त', 'च', 'ट', 'Enter'],
+    ['Shift', 'ॉ', 'ं', 'म', 'न', 'व', 'ल', 'स', ',', '.', 'य', 'Shift'],
+    ['Space']
+];
+
+// Punjabi (Gurmukhi) keyboard layout - Jhelum/Inscript
+const punjabiKeyboardLayout = [
+    ['~', '੧', '੨', '੩', '੪', '੫', '੬', '੭', '੮', '੯', '੦', '-', '=', 'Backspace'],
+    ['Tab', 'ੌ', 'ੈ', 'ਾ', 'ੀ', 'ੂ', 'ਬ', 'ਹ', 'ਗ', 'ਦ', 'ਜ', 'ਡ', '਼', '\\'],
+    ['Caps', 'ੋ', 'ੇ', '੍', 'ਿ', 'ੁ', 'ਪ', 'ਰ', 'ਕ', 'ਤ', 'ਚ', 'ਟ', 'Enter'],
+    ['Shift', 'ੰ', 'ਂ', 'ਮ', 'ਨ', 'ਵ', 'ਲ', 'ਸ', ',', '.', 'ਯ', 'Shift'],
+    ['Space']
+];
+
 function renderKeyboard() {
     if (!keyboardContainer) return;
     keyboardContainer.innerHTML = '';
 
-    keyboardLayout.forEach(row => {
+    // Detect current language from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const language = urlParams.get('lang') || 'english';
+
+    // Select appropriate keyboard layout
+    let layout = keyboardLayout; // Default to English
+    if (language === 'hindi') {
+        layout = hindiKeyboardLayout;
+    } else if (language === 'punjabi') {
+        layout = punjabiKeyboardLayout;
+    }
+
+    layout.forEach(row => {
         const rowDiv = document.createElement('div');
         rowDiv.className = 'keyboard-row';
 

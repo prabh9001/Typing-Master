@@ -70,22 +70,39 @@
             opacity: 0.9;
         }
 
-        .cta-button {
+        .language-selection {
+            margin-bottom: 40px;
+        }
+
+        .language-selection h2 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .lang-buttons-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .lang-button {
             background: white;
             color: #667eea;
             border: none;
-            padding: 20px 60px;
-            font-size: 1.3rem;
+            padding: 15px 40px;
+            font-size: 1.2rem;
             font-weight: 600;
-            border-radius: 50px;
+            border-radius: 30px;
             cursor: pointer;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
         }
 
-        .cta-button:hover {
+        .lang-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
             background: #f0f0f0;
         }
 
@@ -163,7 +180,7 @@
 
         .key6 {
             bottom: 10%;
-            center: 40px;
+            left: 50%;
             animation-delay: 1s;
         }
 
@@ -181,7 +198,7 @@
 
         .key9 {
             top: 10%;
-            center: 50px;
+            left: 50%;
             animation-delay: 1s;
         }
 
@@ -210,39 +227,64 @@
         <h1>TypeMee</h1>
         <p class="tagline">Master the Art of Touch Typing</p>
 
-        <button class="cta-button" onclick="startApp()">
-            Start Learning
-        </button>
+        <div class="language-selection">
+            <h2>Choose Your Language</h2>
+            <div class="lang-buttons-container">
+                <button class="lang-button" onclick="startApp('english')">
+                    🇬🇧 English
+                </button>
+                <button class="lang-button" onclick="startApp('hindi')">
+                    🇮🇳 हिंदी (Hindi)
+                </button>
+                <button class="lang-button" onclick="startApp('punjabi')">
+                    🇮🇳 ਪੰਜਾਬੀ (Punjabi)
+                </button>
+            </div>
+        </div>
 
         <div class="features">
             <div class="feature">
                 <div class="feature-icon">🎯</div>
-                <div class="feature-text">50+ Lessons</div>
+                <div class="feature-text" style="color: #000000;font-weight: bold;">50+ Lessons</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">📊</div>
-                <div class="feature-text">Track Progress</div>
+                <div class="feature-text" style="color: #000000;font-weight: bold;">Track Progress</div>
             </div>
             <div class="feature">
                 <div class="feature-icon">⚡</div>
-                <div class="feature-text">Improve Speed</div>
+                <div class="feature-text" style="color: #000000;font-weight: bold;"">Improve Speed</div>
+            </div>
+            <div class=" feature">
+                    <div class="feature-icon">🌍</div>
+                    <div class="feature-text" style="color: #000000;font-weight: bold;">3 Languages</div>
+                </div>
             </div>
         </div>
-    </div>
-    <script>
-        function startApp() {
-            let userName = sessionStorage.getItem('userName');
-            if (!userName) {
-                userName = prompt('Welcome to TypeMee! Please enter your name:');
-                if (userName && userName.trim()) {
-                    sessionStorage.setItem('userName', userName.trim());
-                } else {
-                    sessionStorage.setItem('userName', 'Guest');
+        <script>
+            function startApp(language = 'english') {
+                let userName = sessionStorage.getItem('userName');
+                if (!userName) {
+                    userName = prompt('Welcome to TypeMee! Please enter your name:');
+                    if (userName && userName.trim()) {
+                        sessionStorage.setItem('userName', userName.trim());
+                    } else {
+                        sessionStorage.setItem('userName', 'Guest');
+                    }
+                }
+                // Store selected language
+                sessionStorage.setItem('selectedLanguage', language);
+
+                // Redirect to appropriate lessons page
+                if (language === 'english') {
+                    window.location.href = 'lessons.html';
+                } else if (language === 'hindi') {
+                    window.location.href = 'lessons_hindi.html';
+                } else if (language === 'punjabi') {
+                    window.location.href = 'lessons_punjabi.html';
                 }
             }
-            window.location.href = 'lessons.html';
-        }
-    </script>
+        </script>
 </body>
 
 </html>

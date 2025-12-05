@@ -10,11 +10,16 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+    <!-- Fonts for Hindi and Punjabi -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gurmukhi:wght@400;500;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <div class="logo" onclick="window.location.href='../lessons.html'" style="cursor: pointer;">
+        <div class="logo" onclick="goBack()" style="cursor: pointer;">
             <span>TypeMee</span>
         </div>
         <div style="flex: 1; text-align: center; font-weight: 500; font-size: 1.1rem; color: #202124;">
@@ -78,9 +83,33 @@
     <footer style="text-align:center; padding:20px 0; font-size:14px; color:#666; margin-top: auto;">
         © 2025 Prabhjeet Singh. All rights reserved.
     </footer>
+    <!-- Load lesson data for different languages -->
+    <script src="../lessons_data_hindi.js"></script>
+    <script src="../lessons_data_punjabi.js"></script>
+    <script>
+        // CRITICAL: Set up lesson data BEFORE loading script.js
+        // This ensures the lessons array is populated when initGame() runs
+        (function () {
+            const urlParams = new URLSearchParams(window.location.search);
+            const language = urlParams.get('lang') || 'english';
+
+            console.log('Language detected:', language);
+
+            // Pre-load the correct lessons array based on language
+            if (language === 'hindi' && typeof hindiLessons !== 'undefined') {
+                window.lessons = hindiLessons;
+                console.log('Loaded Hindi lessons:', hindiLessons.length, 'lessons');
+            } else if (language === 'punjabi' && typeof punjabiLessons !== 'undefined') {
+                window.lessons = punjabiLessons;
+                console.log('Loaded Punjabi lessons:', punjabiLessons.length, 'lessons');
+            } else {
+                console.log('Using default English lessons');
+            }
+        })();
+    </script>
     <script src="../script.js"></script>
     <script>
-        // Display username and lesson number in header
+        // Initialize after DOM loads
         document.addEventListener('DOMContentLoaded', function () {
             const userName = sessionStorage.getItem('userName') || 'Guest';
             const nameDisplay = document.getElementById('user-name-display');
@@ -88,14 +117,37 @@
                 nameDisplay.textContent = 'Welcome, ' + userName + '!';
             }
 
-            // Get lesson number from URL
+            // Get lesson ID and language from URL
             const urlParams = new URLSearchParams(window.location.search);
             const lessonId = urlParams.get('lesson');
+            const language = urlParams.get('lang') || 'english';
+
             const lessonNumberDisplay = document.getElementById('lesson-number-display');
             if (lessonNumberDisplay && lessonId) {
-                lessonNumberDisplay.textContent = 'Lesson ' + lessonId;
+                // Display appropriate label based on language
+                let label = 'Lesson ';
+                if (language === 'hindi') {
+                    label = 'पाठ ';
+                } else if (language === 'punjabi') {
+                    label = 'ਪਾਠ ';
+                }
+                lessonNumberDisplay.textContent = label + lessonId.replace(/[a-z_]+/gi, '');
             }
         });
+
+        // Add back button navigation
+        function goBack() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const language = urlParams.get('lang') || 'english';
+
+            if (language === 'hindi') {
+                window.location.href = '../lessons_hindi.html';
+            } else if (language === 'punjabi') {
+                window.location.href = '../lessons_punjabi.html';
+            } else {
+                window.location.href = '../lessons.html';
+            }
+        }
     </script>
 </body>
 

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang='hi'>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>TypeMee - हिंदी टाइपिंग सीखें</title>
+    <link rel='stylesheet' href='style.css'>
+    <link href='https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;700&display=swap'
+        rel='stylesheet'>
+    <style>
+        .lang-indicator {
+            background: #4285f4;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .back-to-home {
+            background: none;
+            border: 1px solid #dadce0;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+
+        .back-to-home:hover {
+            background: #f1f3f4;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class='logo' onclick="window.location.href='index.html'" style="cursor: pointer;">
+            <span>TypeMee</span>
+        </div>
+        <div style='flex: 1; text-align: center; font-weight: 500; font-size: 1.1rem; color: #202124;'>
+            <span class="lang-indicator">🇮🇳 हिंदी</span>
+            <span id='user-name-display'></span>
+        </div>
+        <div class='header-controls'>
+            <button class="back-to-home" onclick="window.location.href='index.html'">Change Language</button>
+            <button onclick='clearHistory()'
+                style='background: none; border: 1px solid #dadce0; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; margin-left: 10px;'>Clear
+                History</button>
+        </div>
+    </header>
+    <main
+        style='background-color: #f1f3f4; align-items: flex-start; justify-content: flex-start; overflow-y: auto; flex: 1;'>
+        <div style='width: 100%; padding: 40px 10%; box-sizing: border-box;'>
+            <h1 style='color: #202124; margin-bottom: 30px; font-family: "Noto Sans Devanagari", sans-serif;'>हिंदी
+                टाइपिंग पाठ</h1>
+            <div class='lesson-grid'>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_1&lang=hindi'" id="lesson-hindi_1">
+                    <div class="lesson-number">Lesson 1</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">स्वर - अ आ</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_1" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_1">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_1">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_1">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_2&lang=hindi'" id="lesson-hindi_2">
+                    <div class="lesson-number">Lesson 2</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">स्वर - इ ई उ ऊ</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_2" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_2">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_2">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_2">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_3&lang=hindi'" id="lesson-hindi_3">
+                    <div class="lesson-number">Lesson 3</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">स्वर - ए ऐ ओ औ</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_3" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_3">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_3">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_3">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_4&lang=hindi'" id="lesson-hindi_4">
+                    <div class="lesson-number">Lesson 4</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">स्वर - अं अः ऋ</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_4" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_4">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_4">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_4">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_5&lang=hindi'" id="lesson-hindi_5">
+                    <div class="lesson-number">Lesson 5</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">सभी स्वर अभ्यास</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_5" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_5">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_5">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_5">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_6&lang=hindi'" id="lesson-hindi_6">
+                    <div class="lesson-number">Lesson 6</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">व्यंजन - क ख ग घ ङ</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_6" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_6">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_6">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_6">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_7&lang=hindi'" id="lesson-hindi_7">
+                    <div class="lesson-number">Lesson 7</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">व्यंजन - च छ ज झ ञ</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_7" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_7">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_7">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_7">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_8&lang=hindi'" id="lesson-hindi_8">
+                    <div class="lesson-number">Lesson 8</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">व्यंजन - ट ठ ड ढ ण</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_8" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_8">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_8">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_8">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_9&lang=hindi'" id="lesson-hindi_9">
+                    <div class="lesson-number">Lesson 9</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">व्यंजन - त थ द ध न</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_9" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_9">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_9">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_9">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_10&lang=hindi'" id="lesson-hindi_10">
+                    <div class="lesson-number">Lesson 10</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">व्यंजन - प फ ब भ म</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_10" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_10">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_10">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_10">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_11&lang=hindi'" id="lesson-hindi_11">
+                    <div class="lesson-number">Lesson 11</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">व्यंजन - य र ल व</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_11" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_11">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_11">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_11">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_12&lang=hindi'" id="lesson-hindi_12">
+                    <div class="lesson-number">Lesson 12</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">व्यंजन - श ष स ह</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_12" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_12">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_12">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_12">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_13&lang=hindi'" id="lesson-hindi_13">
+                    <div class="lesson-number">Lesson 13</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">संयुक्त व्यंजन - क्ष त्र ज्ञ श्र</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_13" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_13">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_13">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_13">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_14&lang=hindi'" id="lesson-hindi_14">
+                    <div class="lesson-number">Lesson 14</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">सभी व्यंजन अभ्यास - 1</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_14" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_14">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_14">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_14">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_15&lang=hindi'" id="lesson-hindi_15">
+                    <div class="lesson-number">Lesson 15</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">सभी व्यंजन अभ्यास - 2</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_15" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_15">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_15">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_15">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_16&lang=hindi'" id="lesson-hindi_16">
+                    <div class="lesson-number">Lesson 16</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">मात्रा - ा की मात्रा</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_16" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_16">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_16">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_16">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_17&lang=hindi'" id="lesson-hindi_17">
+                    <div class="lesson-number">Lesson 17</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">मात्रा - ि ी की मात्रा</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_17" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_17">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_17">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_17">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_18&lang=hindi'" id="lesson-hindi_18">
+                    <div class="lesson-number">Lesson 18</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">मात्रा - ु ू की मात्रा</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_18" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_18">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_18">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_18">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_19&lang=hindi'" id="lesson-hindi_19">
+                    <div class="lesson-number">Lesson 19</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">मात्रा - े ै की मात्रा</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_19" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_19">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_19">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_19">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_20&lang=hindi'" id="lesson-hindi_20">
+                    <div class="lesson-number">Lesson 20</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">मात्रा - ो ौ की मात्रा</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_20" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_20">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_20">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_20">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_21&lang=hindi'" id="lesson-hindi_21">
+                    <div class="lesson-number">Lesson 21</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">मात्रा - ं ः की मात्रा</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_21" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_21">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_21">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_21">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_22&lang=hindi'" id="lesson-hindi_22">
+                    <div class="lesson-number">Lesson 22</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">संयुक्त मात्रा अभ्यास - 1</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_22" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_22">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_22">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_22">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_23&lang=hindi'" id="lesson-hindi_23">
+                    <div class="lesson-number">Lesson 23</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">संयुक्त मात्रा अभ्यास - 2</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_23" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_23">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_23">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_23">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_24&lang=hindi'" id="lesson-hindi_24">
+                    <div class="lesson-number">Lesson 24</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">सभी मात्राओं का अभ्यास - 1</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_24" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_24">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_24">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_24">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_25&lang=hindi'" id="lesson-hindi_25">
+                    <div class="lesson-number">Lesson 25</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">सभी मात्राओं का अभ्यास - 2</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_25" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_25">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_25">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_25">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_26&lang=hindi'" id="lesson-hindi_26">
+                    <div class="lesson-number">Lesson 26</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">दो अक्षर के शब्द - 1</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_26" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_26">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_26">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_26">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_27&lang=hindi'" id="lesson-hindi_27">
+                    <div class="lesson-number">Lesson 27</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">दो अक्षर के शब्द - 2</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_27" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_27">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_27">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_27">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_28&lang=hindi'" id="lesson-hindi_28">
+                    <div class="lesson-number">Lesson 28</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">तीन अक्षर के शब्द - 1</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_28" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_28">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_28">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_28">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_29&lang=hindi'" id="lesson-hindi_29">
+                    <div class="lesson-number">Lesson 29</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">तीन अक्षर के शब्द - 2</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_29" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_29">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_29">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_29">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_30&lang=hindi'" id="lesson-hindi_30">
+                    <div class="lesson-number">Lesson 30</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">संख्याएं - 1 से 10</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_30" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_30">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_30">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_30">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_31&lang=hindi'" id="lesson-hindi_31">
+                    <div class="lesson-number">Lesson 31</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">संख्याएं - 11 से 20</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_31" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_31">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_31">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_31">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_32&lang=hindi'" id="lesson-hindi_32">
+                    <div class="lesson-number">Lesson 32</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">रंगों के नाम</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_32" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_32">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_32">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_32">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_33&lang=hindi'" id="lesson-hindi_33">
+                    <div class="lesson-number">Lesson 33</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">फलों के नाम</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_33" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_33">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_33">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_33">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_34&lang=hindi'" id="lesson-hindi_34">
+                    <div class="lesson-number">Lesson 34</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">सब्जियों के नाम</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_34" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_34">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_34">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_34">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_35&lang=hindi'" id="lesson-hindi_35">
+                    <div class="lesson-number">Lesson 35</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">शरीर के अंग</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_35" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_35">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_35">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_35">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_36&lang=hindi'" id="lesson-hindi_36">
+                    <div class="lesson-number">Lesson 36</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">परिवार के सदस्य</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_36" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_36">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_36">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_36">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_37&lang=hindi'" id="lesson-hindi_37">
+                    <div class="lesson-number">Lesson 37</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">पशु पक्षी के नाम</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_37" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_37">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_37">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_37">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_38&lang=hindi'" id="lesson-hindi_38">
+                    <div class="lesson-number">Lesson 38</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">दिशाएं और समय</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_38" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_38">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_38">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_38">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_39&lang=hindi'" id="lesson-hindi_39">
+                    <div class="lesson-number">Lesson 39</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">मौसम और प्रकृति</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_39" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_39">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_39">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_39">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_40&lang=hindi'" id="lesson-hindi_40">
+                    <div class="lesson-number">Lesson 40</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">स्थान के नाम</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_40" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_40">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_40">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_40">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_41&lang=hindi'" id="lesson-hindi_41">
+                    <div class="lesson-number">Lesson 41</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">सरल वाक्य - 1</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_41" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_41">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_41">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_41">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_42&lang=hindi'" id="lesson-hindi_42">
+                    <div class="lesson-number">Lesson 42</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">सरल वाक्य - 2</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_42" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_42">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_42">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_42">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_43&lang=hindi'" id="lesson-hindi_43">
+                    <div class="lesson-number">Lesson 43</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">सरल वाक्य - 3</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_43" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_43">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_43">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_43">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_44&lang=hindi'" id="lesson-hindi_44">
+                    <div class="lesson-number">Lesson 44</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">प्रश्नवाचक वाक्य</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_44" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_44">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_44">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_44">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_45&lang=hindi'" id="lesson-hindi_45">
+                    <div class="lesson-number">Lesson 45</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">दैनिक जीवन के वाक्य</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_45" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_45">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_45">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_45">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_46&lang=hindi'" id="lesson-hindi_46">
+                    <div class="lesson-number">Lesson 46</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">विद्यालय से संबंधित वाक्य</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_46" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_46">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_46">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_46">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_47&lang=hindi'" id="lesson-hindi_47">
+                    <div class="lesson-number">Lesson 47</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">खेल और मनोरंजन</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_47" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_47">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_47">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_47">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_48&lang=hindi'" id="lesson-hindi_48">
+                    <div class="lesson-number">Lesson 48</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">भोजन से संबंधित वाक्य</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_48" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_48">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_48">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_48">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_49&lang=hindi'" id="lesson-hindi_49">
+                    <div class="lesson-number">Lesson 49</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">प्रकृति और पर्यावरण</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_49" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_49">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_49">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_49">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_50&lang=hindi'" id="lesson-hindi_50">
+                    <div class="lesson-number">Lesson 50</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">मिश्रित वाक्य अभ्यास</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_50" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_50">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_50">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_50">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_51&lang=hindi'" id="lesson-hindi_51">
+                    <div class="lesson-number">Lesson 51</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">100 शब्द पैराग्राफ अभ्यास</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_51" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_51">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_51">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_51">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_52&lang=hindi'" id="lesson-hindi_52">
+                    <div class="lesson-number">Lesson 52</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">200 शब्द पैराग्राफ अभ्यास</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_52" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_52">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_52">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_52">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_53&lang=hindi'" id="lesson-hindi_53">
+                    <div class="lesson-number">Lesson 53</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">300 शब्द पैराग्राफ अभ्यास</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_53" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_53">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_53">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_53">-</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=hindi_54&lang=hindi'" id="lesson-hindi_54">
+                    <div class="lesson-number">Lesson 54</div>
+                    <div class="lesson-title" style="font-family: 'Noto Sans Devanagari', sans-serif;">500 शब्द पैराग्राफ अभ्यास</div>
+                    <div class="lesson-stars">☆☆☆☆☆</div>
+                    <p style="color: #5f6368; font-size: 0.9rem; font-family: 'Noto Sans Devanagari', sans-serif;">Practice typing this lesson.</p>
+                    <div class="lesson-history" id="history-hindi_54" style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
+                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
+                            <div><strong>WPM:</strong> <span id="wpm-hindi_54">-</span></div>
+                            <div><strong>Acc:</strong> <span id="acc-hindi_54">-</span>%</div>
+                            <div><strong>Errors:</strong> <span id="err-hindi_54">-</span></div>
+                        </div>
+                    </div>
+                </div></div>
+        </div>
+    </main>
+    <script>
+        // Display username in header
+        document.addEventListener('DOMContentLoaded', function () {
+            let userName = sessionStorage.getItem('userName');
+
+            // Prompt for name if not already set
+            if (!userName) {
+                userName = prompt('TypeMee में आपका स्वागत है! कृपया अपना नाम दर्ज करें:');
+                if (userName && userName.trim()) {
+                    sessionStorage.setItem('userName', userName.trim());
+                } else {
+                    sessionStorage.setItem('userName', 'अतिथि');
+                    userName = 'अतिथि';
+                }
+            }
+            const nameDisplay = document.getElementById('user-name-display');
+            if (nameDisplay) {
+                nameDisplay.textContent = ' | स्वागत है, ' + userName + '!';
+            }
+
+            // Load and display lesson history
+            loadLessonHistory();
+        });
+
+        function clearHistory() {
+            if (confirm('क्या आप सभी प्रगति मिटाना चाहते हैं?')) {
+                localStorage.removeItem('lessonHistory');
+                location.reload();
+            }
+        }
+
+        function loadLessonHistory() {
+            const history = JSON.parse(localStorage.getItem('lessonHistory') || '{}');
+            Object.keys(history).forEach(lessonKey => {
+                const lesson = history[lessonKey];
+                const historyDiv = document.getElementById(`history-${lessonKey}`);
+                const wpmSpan = document.getElementById(`wpm-${lessonKey}`);
+                const accSpan = document.getElementById(`acc-${lessonKey}`);
+                const errSpan = document.getElementById(`err-${lessonKey}`);
+
+                if (historyDiv && wpmSpan && accSpan && errSpan && lesson.wpm) {
+                    historyDiv.style.display = 'block';
+                    wpmSpan.textContent = lesson.wpm;
+                    accSpan.textContent = lesson.accuracy;
+                    errSpan.textContent = lesson.mistakes;
+
+                    // Update stars based on accuracy
+                    const lessonCard = document.getElementById(`lesson-${lessonKey}`);
+                    if (lessonCard) {
+                        const starsDiv = lessonCard.querySelector('.lesson-stars');
+                        const stars = Math.floor(lesson.accuracy / 20);
+                        starsDiv.textContent = '★'.repeat(stars) + '☆'.repeat(5 - stars);
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
