@@ -844,7 +844,9 @@ function loadStep() {
     } else if (step.type === 'practice') {
         instructionText.style.display = 'none';
         typingArea.style.display = 'flex';
-        currentText = step.text;
+        // Normalize text to NFD (Canonical Decomposition) for consistent Unicode handling
+        // This splits precomposed characters (like 'क़') into Base + Mark, requiring user to type both keys
+        currentText = step.text.normalize('NFD');
         renderTypingArea();
         highlightKey(currentText[0]);
         if (skipBtn) skipBtn.textContent = "Next";
@@ -1119,6 +1121,12 @@ function renderTypingArea() {
         if (currentText[i] === ' ') {
             span.classList.add('space');
         }
+
+        // Identify combining marks
+        if (/[\u093A-\u094F\u0901-\u0903\u093C\u0A3C-\u0A4D\u0A01-\u0A03\u0A70\u0A71]/.test(currentText[i])) {
+            span.classList.add('combining-mark');
+        }
+
         if (i === 0) span.classList.add('current');
         typingArea.appendChild(span);
     }
@@ -1160,11 +1168,29 @@ function handleInput(e) {
     totalKeystrokes++;
 
     const targetChar = currentText[currentIndex];
-    const typedChar = e.key;
+    let typedChar = e.key;
 
-    animateKey(typedChar);
+    // KEYBOARD MAPPING LOGIC
+    // If we are in a non-English mode, we map the English keystroke to the target language char
+    // regardless of whether the user sent 'q' or 'औ'.
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang') || 'english';
 
-    if (typedChar === targetChar) {
+    if (lang !== 'english' && languageMaps[lang]) {
+        if (languageMaps[lang][e.key]) {
+            // User typed English key (e.g. 'q'), we map it to 'औ'
+            typedChar = languageMaps[lang][e.key];
+        }
+    }
+
+    animateKey(e.key); // Animate the PHYSICAL key pressed (English key)
+
+    // Normalize both characters to NFD (Decomposition) to ensure component-wise matching
+    // This allows users to type components (Base + Nukta) and match against Precomposed targets which are decomposed here
+    const normalizedTarget = targetChar.normalize('NFD');
+    const normalizedTyped = typedChar.normalize('NFD');
+
+    if (normalizedTyped === normalizedTarget) {
         if (typingArea.style.display !== 'none') {
             const charSpan = typingArea.children[currentIndex];
             charSpan.classList.remove('current', 'incorrect');
@@ -1214,56 +1240,104 @@ const keyboardLayout = [
     ['Space']
 ];
 
-// Hindi (Devanagari) keyboard layout - Inscript
-const hindiKeyboardLayout = [
-    ['~', '१', '२', '३', '४', '५', '६', '७', '८', '९', '०', '-', 'ृ', 'Backspace'],
-    ['Tab', 'ौ', 'ै', 'ा', 'ी', 'ू', 'ब', 'ह', 'ग', 'द', 'ज', 'ड', '़', '\\'],
-    ['Caps', 'ो', 'े', '्', 'ि', 'ु', 'प', 'र', 'क', 'त', 'च', 'ट', 'Enter'],
-    ['Shift', 'ॉ', 'ं', 'म', 'न', 'व', 'ल', 'स', ',', '.', 'य', 'Shift'],
-    ['Space']
-];
+// Complete Inscript Mappings (Input & Visual)
+const languageMaps = {
+    hindi: {
+        // Unshifted (Row 1)
+        '`': 'ॆ', '1': '१', '2': '२', '3': '३', '4': '४', '5': '५', '6': '६', '7': '७', '8': '८', '9': '९', '0': '०', '-': '-', '=': 'ृ',
+        // Unshifted (Row 2)
+        'q': 'ौ', 'w': 'ै', 'e': 'ा', 'r': 'ी', 't': 'ू', 'y': 'ब', 'u': 'ह', 'i': 'ग', 'o': 'द', 'p': 'ज', '[': 'ड', ']': '़', '\\': 'ॊ',
+        // Unshifted (Row 3)
+        'a': 'ो', 's': 'े', 'd': '्', 'f': 'ि', 'g': 'ु', 'h': 'प', 'j': 'र', 'k': 'क', 'l': 'त', ';': 'च', "'": 'ट',
+        // Unshifted (Row 4)
+        'z': 'ॆ', 'x': 'ं', 'c': 'म', 'v': 'न', 'b': 'व', 'n': 'ल', 'm': 'स', ',': ',', '.': '.', '/': 'य',
 
-// Punjabi (Gurmukhi) keyboard layout - Jhelum/Inscript
-const punjabiKeyboardLayout = [
-    ['~', '੧', '੨', '੩', '੪', '੫', '੬', '੭', '੮', '੯', '੦', '-', '=', 'Backspace'],
-    ['Tab', 'ੌ', 'ੈ', 'ਾ', 'ੀ', 'ੂ', 'ਬ', 'ਹ', 'ਗ', 'ਦ', 'ਜ', 'ਡ', '਼', '\\'],
-    ['Caps', 'ੋ', 'ੇ', '੍', 'ਿ', 'ੁ', 'ਪ', 'ਰ', 'ਕ', 'ਤ', 'ਚ', 'ਟ', 'Enter'],
-    ['Shift', 'ੰ', 'ਂ', 'ਮ', 'ਨ', 'ਵ', 'ਲ', 'ਸ', ',', '.', 'ਯ', 'Shift'],
-    ['Space']
-];
+        // Shifted (Row 1)
+        '~': 'ॏ', '!': 'ॲ', '@': 'ॅ', '#': '्र', '$': 'र्', '%': 'ज्ञ', '^': 'त्र', '&': 'क्ष', '*': 'श्र', '(': '(', ')': ')', '_': 'ः', '+': 'ऋ',
+        // Shifted (Row 2)
+        'Q': 'औ', 'W': 'ऐ', 'E': 'आ', 'R': 'ई', 'T': 'ऊ', 'Y': 'भ', 'U': 'ङ', 'I': 'घ', 'O': 'ध', 'P': 'झ', '{': 'ढ', '}': 'ञ', '|': 'ऑ',
+        // Shifted (Row 3)
+        'A': 'ओ', 'S': 'ए', 'D': 'अ', 'F': 'इ', 'G': 'उ', 'H': 'फ', 'J': 'ऱ', 'K': 'ख', 'L': 'थ', ':': 'छ', '"': 'ठ',
+        // Shifted (Row 4)
+        'Z': 'सन्', 'X': 'ँ', 'C': 'ण', 'V': 'ऩ', 'B': 'ळ', 'N': 'ള', 'M': 'श', '<': 'ष', '>': '।', '?': 'य़'
+    },
+    punjabi: {
+        // Unshifted (Row 1)
+        '`': 'ੋ', '1': '੧', '2': '੨', '3': '੩', '4': '੪', '5': '੫', '6': '੬', '7': '੭', '8': '੮', '9': '੯', '0': '੦', '-': '-', '=': '੍ਰ',
+        // Unshifted (Row 2)
+        'q': 'ੌ', 'w': 'ੈ', 'e': 'ਾ', 'r': 'ੀ', 't': 'ੂ', 'y': 'ਬ', 'u': 'ਹ', 'i': 'ਗ', 'o': 'ਦ', 'p': 'ਜ', '[': 'ਡ', ']': '਼', '\\': 'ਞ',
+        // Unshifted (Row 3)
+        'a': 'ੋ', 's': 'ੇ', 'd': '੍', 'f': 'ਿ', 'g': 'ੁ', 'h': 'ਪ', 'j': 'ਰ', 'k': 'ਕ', 'l': 'ਤ', ';': 'ਚ', "'": 'ਟ',
+        // Unshifted (Row 4)
+        'z': 'ੑ', 'x': 'ੰ', 'c': 'ਮ', 'v': 'ਨ', 'b': 'ਵ', 'n': 'ਲ', 'm': 'ਸ', ',': ',', '.': '.', '/': 'ਯ',
+
+        // Shifted
+        'Q': 'ਔ', 'W': 'ਐ', 'E': 'ਆ', 'R': 'ਈ', 'T': 'ਊ', 'Y': 'ਭ', 'U': 'ਙ', 'I': 'ਘ', 'O': 'ਧ', 'P': 'ਝ', '{': 'ਢ', '}': 'ਞ',
+        'A': 'ਓ', 'S': 'ਏ', 'D': 'ਅ', 'F': 'ਇ', 'G': 'ਉ', 'H': 'ਫ', 'J': 'ੜ', 'K': 'ਖ', 'L': 'ਥ', ':': 'ਛ', '"': 'ਠ',
+        'Z': 'ੵ', 'X': 'ੱ', 'C': 'ਣ', 'V': 'ਨ', 'B': 'ਲ਼', 'N': 'ਲ', 'M': 'ਸ਼', '<': 'ਸ਼', '>': '।', '?': 'ਯ'
+    }
+};
 
 function renderKeyboard() {
     if (!keyboardContainer) return;
     keyboardContainer.innerHTML = '';
 
-    // Detect current language from URL
     const urlParams = new URLSearchParams(window.location.search);
-    const language = urlParams.get('lang') || 'english';
+    const lang = urlParams.get('lang') || 'english';
+    const mapping = languageMaps[lang];
 
-    // Select appropriate keyboard layout
-    let layout = keyboardLayout; // Default to English
-    if (language === 'hindi') {
-        layout = hindiKeyboardLayout;
-    } else if (language === 'punjabi') {
-        layout = punjabiKeyboardLayout;
-    }
-
-    layout.forEach(row => {
+    // Always iterate the English layout to maintain structure
+    keyboardLayout.forEach(row => {
         const rowDiv = document.createElement('div');
         rowDiv.className = 'keyboard-row';
 
         row.forEach(key => {
             const keyDiv = document.createElement('div');
             keyDiv.className = 'key';
-            keyDiv.textContent = key === 'Space' ? '' : key;
-            keyDiv.dataset.key = key.toLowerCase();
 
-            if (key === 'Space') keyDiv.classList.add('space');
-            if (key === 'Shift') keyDiv.classList.add('shift');
-            if (key === 'Enter') keyDiv.classList.add('enter');
-            if (key === 'Backspace') keyDiv.classList.add('backspace');
-            if (key === 'Tab') keyDiv.classList.add('tab');
-            if (key === 'Caps') keyDiv.classList.add('caps');
+            let keyId = key.toLowerCase();
+            let englishLabel = key;
+            let langLabel = '';
+
+            // Map special keys
+            if (key === 'Space') { keyId = 'space'; englishLabel = 'Space'; }
+            else if (key === 'Backspace') { keyId = 'backspace'; englishLabel = '⌫'; }
+            else if (key === 'Tab') { keyId = 'tab'; englishLabel = 'Tab'; }
+            else if (key === 'Caps') { keyId = 'caps'; englishLabel = 'Caps'; }
+            else if (key === 'Enter') { keyId = 'enter'; englishLabel = 'Enter'; }
+            else if (key === 'Shift') { keyId = 'shift'; englishLabel = 'Shift'; }
+            else if (key === '\\') { keyId = '\\'; }
+            else if (key === "'") { keyId = "'"; }
+            else if (key === '"') { keyId = '"'; }
+
+            // Determine Label(s)
+            if (mapping && !['space', 'backspace', 'tab', 'caps', 'enter', 'shift'].includes(keyId)) {
+                // Dual display for Hindi/Punjabi
+                // Show Unshifted mapping by default
+                const mappedChar = mapping[key] || '';
+
+                const engSpan = document.createElement('span');
+                engSpan.className = 'eng-char';
+                engSpan.textContent = englishLabel;
+
+                const langSpan = document.createElement('span');
+                langSpan.className = 'lang-char';
+                langSpan.textContent = mappedChar;
+
+                keyDiv.appendChild(engSpan);
+                keyDiv.appendChild(langSpan);
+            } else {
+                // English only or Special keys
+                keyDiv.textContent = englishLabel;
+            }
+
+            keyDiv.setAttribute('data-key', keyId);
+
+            // Add classes
+            if (['space', 'backspace', 'tab', 'caps', 'enter', 'shift'].includes(keyId)) {
+                keyDiv.classList.add(keyId);
+                keyDiv.classList.add('special-key');
+            }
 
             rowDiv.appendChild(keyDiv);
         });
@@ -1273,15 +1347,89 @@ function renderKeyboard() {
 }
 
 function highlightKey(char) {
+    if (!char) return;
+
+    // Clear existing highlights
     document.querySelectorAll('.key').forEach(k => k.classList.remove('guide'));
 
     let keySelector = char.toLowerCase();
+
+    // Map common chars to their key IDs if they differ
     if (char === ' ') keySelector = 'space';
-    if (['.', ',', ';', "'", '/', '[', ']', '\\', '-', '=', '`'].includes(char)) {
-        // Handle special chars if needed, for now basic support
+
+    const shiftMap = {
+        '~': '`', '!': '1', '@': '2', '#': '3', '$': '4', '%': '5', '^': '6', '&': '7', '*': '8', '(': '9', ')': '0', '_': '-', '+': '=',
+        '{': '[', '}': ']', '|': '\\', ':': ';', '"': "'", '<': ',', '>': '.', '?': '/'
+    };
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get('lang') || 'english';
+
+    // Logic for mapped languages (Hindi/Punjabi)
+    if (lang !== 'english' && languageMaps[lang]) {
+        const mapping = languageMaps[lang];
+        let found = false;
+
+        // REVERSE LOOKUP: Find which English key maps to the target 'char'
+        for (const [engKey, targetVal] of Object.entries(mapping)) {
+            if (targetVal === char) {
+                // Found the English key (e.g. 'Q' for 'औ' or 'q' for 'ौ')
+                // engKey is the key to press.
+
+                // Determine base key for selector (lowercase)
+                keySelector = engKey.toLowerCase();
+
+                // Handle shifted special chars (e.g. '>' maps to '.')
+                if (shiftMap[engKey]) {
+                    keySelector = shiftMap[engKey];
+                }
+
+                // Check if Shift is needed
+                // If engKey is uppercase (and different from lowercase) -> Shift
+                // OR if engKey is in shiftMap (e.g. '{') -> Shift
+                if ((engKey !== engKey.toLowerCase() && /[A-Z]/.test(engKey)) || shiftMap[engKey]) {
+                    const shiftBtn = document.querySelector('.key[data-key="shift"]');
+                    if (shiftBtn) shiftBtn.classList.add('guide');
+                }
+
+                found = true;
+                break;
+            }
+        }
+
+        if (!found) {
+            // Fallback: maybe char itself is English (common punctuation?)
+            // console.log("Could not find key for:", char);
+        }
+
+    } else {
+        // English Logic
+        if (shiftMap[char]) {
+            keySelector = shiftMap[char];
+            const shiftKey = document.querySelector('.key[data-key="shift"]');
+            if (shiftKey) shiftKey.classList.add('guide');
+        }
+
+        if (char !== char.toLowerCase() && char.toUpperCase() === char && char.length === 1 && /[A-Z]/.test(char)) {
+            const shiftKey = document.querySelector('.key[data-key="shift"]');
+            if (shiftKey) shiftKey.classList.add('guide');
+        }
     }
 
-    const keyDiv = document.querySelector(`.key[data-key="${keySelector}"]`);
+    // Highlighting
+    let keyDiv = null;
+    try {
+        const keys = document.querySelectorAll('.key');
+        for (const k of keys) {
+            if (k.getAttribute('data-key') === keySelector) {
+                keyDiv = k;
+                break;
+            }
+        }
+    } catch (e) {
+        console.error("Error finding key for:", char);
+    }
+
     if (keyDiv) {
         keyDiv.classList.add('guide');
     }
@@ -1300,10 +1448,6 @@ function animateKey(char) {
 
 function playSound(type) {
     // Placeholder for sound functionality
-    // In a real implementation, this would play audio files
-    // console.log(`Playing sound: ${type}`);
-
-    // Optional: Simple beep using AudioContext if desired, but for now just preventing crash is priority.
 }
 
 document.addEventListener('DOMContentLoaded', initGame);

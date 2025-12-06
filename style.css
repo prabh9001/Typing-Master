@@ -69,9 +69,42 @@ main {
     padding-top: 20px;
 }
 
+.stats-bar {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 800px;
+    margin-bottom: 30px;
+    background: var(--surface-color);
+    padding: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-weight: bold;
+    color: var(--text-secondary);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stat-value {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+
 /* Instruction/Text Display */
 #game-area {
-    width: 100%: max-width: 900px;
+    width: 100%;
+    max-width: 900px;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -102,8 +135,8 @@ main {
     flex-wrap: wrap;
     align-items: flex-start;
     align-content: flex-start;
-    justify-content: flex-start;
-    margin: 0 20px;
+    justify-content: center;
+    margin: 0 auto;
     position: relative;
     user-select: none;
     line-height: 1.5;
@@ -111,7 +144,8 @@ main {
 
 .char {
     position: relative;
-    margin: 0 1px;
+    /* Margin removed for proper Indic text shaping */
+    margin: 0;
     padding: 2px 0;
     border-radius: 2px;
     transition: background-color 0.1s, color 0.1s;
@@ -468,4 +502,53 @@ input:checked+.slider:before {
 
 .text-large {
     font-size: 2.5rem !important;
+}
+
+/* Key Styles for Dual Language Support */
+.key {
+    position: relative;
+    /* Ensure absolute positioning works for children */
+}
+
+/* English char in top-left */
+.key .eng-char {
+    position: absolute;
+    top: 3px;
+    left: 5px;
+    font-size: 0.75rem;
+    color: #9aa0a6;
+    /* Lighter text for English */
+    font-weight: 500;
+}
+
+/* Target language char (Hindi/Punjabi) in center */
+.key .lang-char {
+    font-size: 1.3rem;
+    margin-top: 8px;
+    /* Push down slightly */
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Adjust for special keys (Space, Enter, etc) */
+.key.space .eng-char,
+.key.shift .eng-char,
+.key.enter .eng-char,
+.key.backspace .eng-char,
+.key.tab .eng-char,
+.key.caps .eng-char {
+    display: none;
+    /* Hide dual labels for functional keys */
+}
+
+.key.space .lang-char,
+.key.shift .lang-char,
+.key.enter .lang-char,
+.key.backspace .lang-char,
+.key.tab .lang-char,
+.key.caps .lang-char {
+    margin-top: 0;
+    font-size: 0.9rem;
+    /* Reset to normal size */
+    color: var(--text-secondary);
 }

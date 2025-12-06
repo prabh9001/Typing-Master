@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lesson - TypeMee</title>
+    <link rel="icon" type="image/png" href="../images.png">
     <link rel="stylesheet" href="../style.css">
     <!-- Google Fonts -->
     <link
@@ -32,11 +33,19 @@
     </header>
     <main>
         <div id="game-area">
-            <div id="stats-bar"
-                style="display: flex; justify-content: space-between; width: 100%; max-width: 800px; margin-bottom: 20px; font-weight: bold; color: var(--text-secondary);">
-                <div>WPM: <span id="wpm-display">0</span></div>
-                <div>Accuracy: <span id="accuracy-display">100%</span></div>
-                <div>Mistakes: <span id="mistakes-display">0</span></div>
+            <div id="stats-bar" class="stats-bar">
+                <div class="stat-item">
+                    <span class="stat-value" id="wpm-display">0</span>
+                    <span class="stat-label">WPM</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="accuracy-display">100%</span>
+                    <span class="stat-label">Accuracy</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="mistakes-display">0</span>
+                    <span class="stat-label">Mistakes</span>
+                </div>
             </div>
             <div id="instruction-text" class="instruction-text">
                 Type the <span class="highlight">f</span> key using your left index finger.

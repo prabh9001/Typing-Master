@@ -5,8 +5,24 @@
     <meta charset='UTF-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <title>TypeMee - Learn Touch Typing</title>
+    <link rel="icon" type="image/png" href="images.png">
     <link rel='stylesheet' href='style.css'>
     <link href='https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap' rel='stylesheet'>
+    <style>
+        .back-to-home {
+            background: none;
+            border: 1px solid #dadce0;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+
+        .back-to-home:hover {
+            background: #f1f3f4;
+        }
+    </style>
 </head>
 
 <body>
@@ -17,11 +33,9 @@
         <div style='flex: 1; text-align: center; font-weight: 500; font-size: 1.1rem; color: #202124;'
             id='user-name-display'></div>
         <div class='header-controls'>
-            <button onclick="window.location.href='index.html'"
-                style='background: none; border: 1px solid #dadce0; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; margin-right: 10px;'>Change
-                Language</button>
+            <button class="back-to-home" onclick="window.location.href='index.html'">Change Language</button>
             <button onclick='clearHistory()'
-                style='background: none; border: 1px solid #dadce0; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.9rem;'>Clear
+                style='background: none; border: 1px solid #dadce0; padding: 8px 16px; border-radius: 4px; cursor: pointer; font-size: 0.9rem; margin-left: 10px;'>Clear
                 History</button>
         </div>
     </header>
@@ -1077,62 +1091,6 @@
                             <div><strong>WPM:</strong> <span id="wpm-75">-</span></div>
                             <div><strong>Acc:</strong> <span id="acc-75">-</span>%</div>
                             <div><strong>Errors:</strong> <span id="err-75">-</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=76'" id="lesson-76">
-                    <div class="lesson-number">Lesson 76</div>
-                    <div class="lesson-title">100 Word Paragraph</div>
-                    <div class="lesson-stars">☆☆☆☆☆</div>
-                    <p style="color: #5f6368; font-size: 0.9rem;">Practice typing a 100-word paragraph.</p>
-                    <div class="lesson-history" id="history-76"
-                        style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
-                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
-                            <div><strong>WPM:</strong> <span id="wpm-76">-</span></div>
-                            <div><strong>Acc:</strong> <span id="acc-76">-</span>%</div>
-                            <div><strong>Errors:</strong> <span id="err-76">-</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=77'" id="lesson-77">
-                    <div class="lesson-number">Lesson 77</div>
-                    <div class="lesson-title">200 Word Paragraph</div>
-                    <div class="lesson-stars">☆☆☆☆☆</div>
-                    <p style="color: #5f6368; font-size: 0.9rem;">Practice typing a 200-word paragraph.</p>
-                    <div class="lesson-history" id="history-77"
-                        style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
-                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
-                            <div><strong>WPM:</strong> <span id="wpm-77">-</span></div>
-                            <div><strong>Acc:</strong> <span id="acc-77">-</span>%</div>
-                            <div><strong>Errors:</strong> <span id="err-77">-</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=78'" id="lesson-78">
-                    <div class="lesson-number">Lesson 78</div>
-                    <div class="lesson-title">300 Word Paragraph</div>
-                    <div class="lesson-stars">☆☆☆☆☆</div>
-                    <p style="color: #5f6368; font-size: 0.9rem;">Practice typing a 300-word paragraph.</p>
-                    <div class="lesson-history" id="history-78"
-                        style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
-                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
-                            <div><strong>WPM:</strong> <span id="wpm-78">-</span></div>
-                            <div><strong>Acc:</strong> <span id="acc-78">-</span>%</div>
-                            <div><strong>Errors:</strong> <span id="err-78">-</span></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="lesson-card" onclick="window.location.href='home/home.html?lesson=79'" id="lesson-79">
-                    <div class="lesson-number">Lesson 79</div>
-                    <div class="lesson-title">500 Word Paragraph</div>
-                    <div class="lesson-stars">☆☆☆☆☆</div>
-                    <p style="color: #5f6368; font-size: 0.9rem;">Practice typing a 500-word paragraph.</p>
-                    <div class="lesson-history" id="history-79"
-                        style="margin-top: 10px; padding-top: 10px; border-top: 1px solid #dadce0; display: none;">
-                        <div style="display: flex; justify-content: space-around; font-size: 0.85rem;">
-                            <div><strong>WPM:</strong> <span id="wpm-79">-</span></div>
-                            <div><strong>Acc:</strong> <span id="acc-79">-</span>%</div>
-                            <div><strong>Errors:</strong> <span id="err-79">-</span></div>
                         </div>
                     </div>
                 </div>
