@@ -969,8 +969,8 @@ function showLessonComplete() {
         timeText = `${minutes}:${seconds.toString().padStart(2, '0')}`;
     }
 
-    // Save stats to sessionStorage
-    saveLessonHistory(currentLessonId, stats.wpm, stats.accuracy, mistakes);
+    // Save stats to sessionStorage (including time)
+    saveLessonHistory(currentLessonId, stats.wpm, stats.accuracy, mistakes, timeText);
 
     // Get username
     const userName = sessionStorage.getItem('userName') || 'Guest';
@@ -1020,11 +1020,11 @@ function showLessonComplete() {
     `;
 }
 
-// Save lesson history to sessionStorage
-function saveLessonHistory(lessonId, wpm, accuracy, mistakes) {
+// Save lesson history to localStorage
+function saveLessonHistory(lessonId, wpm, accuracy, mistakes, time) {
     let history = {};
     try {
-        const stored = sessionStorage.getItem('lessonHistory');
+        const stored = localStorage.getItem('lessonHistory');
         if (stored) {
             history = JSON.parse(stored);
         }
@@ -1036,11 +1036,12 @@ function saveLessonHistory(lessonId, wpm, accuracy, mistakes) {
         wpm: wpm,
         accuracy: accuracy,
         mistakes: mistakes,
+        time: time || '0:00',
         date: new Date().toISOString()
     };
 
     try {
-        sessionStorage.setItem('lessonHistory', JSON.stringify(history));
+        localStorage.setItem('lessonHistory', JSON.stringify(history));
     } catch (e) {
         console.error('Error saving lesson history:', e);
     }
