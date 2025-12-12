@@ -759,6 +759,7 @@ const skipBtn = document.querySelector('.nav-btn:last-child');
 const wpmDisplay = document.getElementById('wpm-display');
 const accuracyDisplay = document.getElementById('accuracy-display');
 const mistakesDisplay = document.getElementById('mistakes-display');
+const timerDisplay = document.getElementById('timer-display');
 
 function initGame() {
     if (!gameArea) return;
@@ -795,6 +796,12 @@ function loadLesson(id) {
     currentStepIndex = 0;
     mistakes = 0; // Reset mistakes at lesson start, not step start
     totalKeystrokes = 0;
+
+    // Reset timer for new lesson
+    startTime = null;
+    lastKeystrokeTime = null;
+    activeTypingTime = 0;
+
     loadStep();
 }
 
@@ -806,9 +813,7 @@ function loadStep() {
 
     const step = currentLesson.steps[currentStepIndex];
     currentIndex = 0;
-    startTime = null;
-    lastKeystrokeTime = null;
-    activeTypingTime = 0;
+    // Don't reset timer - it continues across steps in the same lesson
     isTyping = true;
 
     // Reset WPM smoothing for new step
@@ -820,8 +825,8 @@ function loadStep() {
         clearInterval(statsUpdateInterval);
     }
 
-    // Start real-time stats update (updates every 100ms)
-    statsUpdateInterval = setInterval(updateStatsDisplay, 100);
+    // Start real-time stats update (updates every 10ms for instant response)
+    statsUpdateInterval = setInterval(updateStatsDisplay, 10);
 
     updateStatsDisplay();
 
@@ -850,6 +855,13 @@ function loadStep() {
         renderTypingArea();
         highlightKey(currentText[0]);
         if (skipBtn) skipBtn.textContent = "Next";
+
+        // Start timer when practice typing begins (only if not already started)
+        if (!startTime) {
+            const now = new Date();
+            startTime = now;
+            lastKeystrokeTime = now;
+        }
     }
 }
 
@@ -922,6 +934,18 @@ function updateStatsDisplay() {
     wpmDisplay.textContent = stats.wpm;
     accuracyDisplay.textContent = `${stats.accuracy}%`;
     mistakesDisplay.textContent = mistakes;
+
+    // Update timer display
+    if (timerDisplay && startTime) {
+        const now = new Date();
+        const elapsedMs = now - startTime;
+        const elapsedSeconds = Math.floor(elapsedMs / 1000);
+        const minutes = Math.floor(elapsedSeconds / 60);
+        const seconds = elapsedSeconds % 60;
+        timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    } else if (timerDisplay) {
+        timerDisplay.textContent = '0:00';
+    }
 }
 
 function showLessonComplete() {
@@ -934,6 +958,16 @@ function showLessonComplete() {
     }
 
     const stats = calculateStats();
+
+    // Calculate total time
+    let timeText = '0:00';
+    if (startTime) {
+        const elapsedMs = new Date() - startTime;
+        const elapsedSeconds = Math.floor(elapsedMs / 1000);
+        const minutes = Math.floor(elapsedSeconds / 60);
+        const seconds = elapsedSeconds % 60;
+        timeText = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
 
     // Save stats to sessionStorage
     saveLessonHistory(currentLessonId, stats.wpm, stats.accuracy, mistakes);
@@ -974,6 +1008,10 @@ function showLessonComplete() {
             <div style="text-align: center;">
                 <div style="font-size: 3rem; font-weight: bold; color: var(--error-color);">${mistakes}</div>
                 <div style="color: var(--text-secondary);">Mistakes</div>
+            </div>
+            <div style="text-align: center;">
+                <div style="font-size: 3rem; font-weight: bold; color: var(--primary-color);">${timeText}</div>
+                <div style="color: var(--text-secondary);">Time</div>
             </div>
         </div>
 
@@ -1148,11 +1186,8 @@ function handleInput(e) {
 
     const now = new Date();
 
-    // Initialize start time on first keystroke
-    if (!startTime) {
-        startTime = now;
-        lastKeystrokeTime = now;
-    } else if (lastKeystrokeTime) {
+    // Track active typing time (timer already started when practice began)
+    if (lastKeystrokeTime) {
         // Calculate time since last keystroke
         const timeSinceLastKey = now - lastKeystrokeTime;
 
@@ -1162,8 +1197,8 @@ function handleInput(e) {
         const timeToAdd = Math.min(timeSinceLastKey, maxGapToCount);
 
         activeTypingTime += timeToAdd;
-        lastKeystrokeTime = now;
     }
+    lastKeystrokeTime = now;
 
     totalKeystrokes++;
 
