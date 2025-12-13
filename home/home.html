@@ -97,7 +97,7 @@
     </footer>
     <!-- Load lesson data for different languages -->
     <script src="../lessons_data_hindi.js"></script>
-    <script src="../lessons_data_punjabi.js"></script>
+    <script src="../lessons_data_raavi.js"></script>
     <script>
         // CRITICAL: Set up lesson data BEFORE loading script.js
         // This ensures the lessons array is populated when initGame() runs
@@ -111,9 +111,9 @@
             if (language === 'hindi' && typeof hindiLessons !== 'undefined') {
                 window.lessons = hindiLessons;
                 console.log('Loaded Hindi lessons:', hindiLessons.length, 'lessons');
-            } else if (language === 'punjabi' && typeof punjabiLessons !== 'undefined') {
-                window.lessons = punjabiLessons;
-                console.log('Loaded Punjabi lessons:', punjabiLessons.length, 'lessons');
+            } else if (language === 'raavi' && typeof raaviLessons !== 'undefined') {
+                window.lessons = raaviLessons;
+                console.log('Loaded Raavi lessons:', raaviLessons.length, 'lessons');
             } else {
                 console.log('Using default English lessons');
             }
@@ -140,10 +140,22 @@
                 let label = 'Lesson ';
                 if (language === 'hindi') {
                     label = 'पाठ ';
-                } else if (language === 'punjabi') {
+                } else if (language === 'raavi') {
                     label = 'ਪਾਠ ';
                 }
                 lessonNumberDisplay.textContent = label + lessonId.replace(/[a-z_]+/gi, '');
+            }
+
+            // Apply font based on language
+            const typingArea = document.getElementById('typing-area');
+            const instructionText = document.getElementById('instruction-text');
+
+            if (language === 'raavi') {
+                if (typingArea) typingArea.style.fontFamily = "'Noto Sans Gurmukhi', sans-serif";
+                if (instructionText) instructionText.style.fontFamily = "'Noto Sans Gurmukhi', sans-serif";
+            } else if (language === 'hindi') {
+                if (typingArea) typingArea.style.fontFamily = "'Noto Sans Devanagari', sans-serif";
+                if (instructionText) instructionText.style.fontFamily = "'Noto Sans Devanagari', sans-serif";
             }
         });
 
@@ -154,8 +166,8 @@
 
             if (language === 'hindi') {
                 window.location.href = '../lessons_hindi.html';
-            } else if (language === 'punjabi') {
-                window.location.href = '../lessons_punjabi.html';
+            } else if (language === 'raavi') {
+                window.location.href = '../lessons_raavi.html';
             } else {
                 window.location.href = '../lessons.html';
             }

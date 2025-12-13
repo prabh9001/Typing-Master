@@ -1097,8 +1097,8 @@ function goBackToLessons() {
 
     if (language === 'hindi') {
         window.location.href = '../lessons_hindi.html';
-    } else if (language === 'punjabi') {
-        window.location.href = '../lessons_punjabi.html';
+    } else if (language === 'raavi') {
+        window.location.href = '../lessons_raavi.html';
     } else {
         window.location.href = '../lessons.html';
     }
@@ -1297,7 +1297,8 @@ const languageMaps = {
         // Shifted (Row 4)
         'Z': 'सन्', 'X': 'ँ', 'C': 'ण', 'V': 'ऩ', 'B': 'ळ', 'N': 'ള', 'M': 'श', '<': 'ष', '>': '।', '?': 'य़'
     },
-    punjabi: {
+    raavi: {
+        // Same as Punjabi - Raavi uses same Inscript keyboard layout
         // Unshifted (Row 1)
         '`': 'ੋ', '1': '੧', '2': '੨', '3': '੩', '4': '੪', '5': '੫', '6': '੬', '7': '੭', '8': '੮', '9': '੯', '0': '੦', '-': '-', '=': '੍ਰ',
         // Unshifted (Row 2)
@@ -1307,9 +1308,11 @@ const languageMaps = {
         // Unshifted (Row 4)
         'z': 'ੑ', 'x': 'ੰ', 'c': 'ਮ', 'v': 'ਨ', 'b': 'ਵ', 'n': 'ਲ', 'm': 'ਸ', ',': ',', '.': '.', '/': 'ਯ',
 
-        // Shifted
+        // Shifted (Row 1)
         'Q': 'ਔ', 'W': 'ਐ', 'E': 'ਆ', 'R': 'ਈ', 'T': 'ਊ', 'Y': 'ਭ', 'U': 'ਙ', 'I': 'ਘ', 'O': 'ਧ', 'P': 'ਝ', '{': 'ਢ', '}': 'ਞ',
+        // Shifted (Row 2)
         'A': 'ਓ', 'S': 'ਏ', 'D': 'ਅ', 'F': 'ਇ', 'G': 'ਉ', 'H': 'ਫ', 'J': 'ੜ', 'K': 'ਖ', 'L': 'ਥ', ':': 'ਛ', '"': 'ਠ',
+        // Shifted (Row 3)
         'Z': 'ੵ', 'X': 'ੱ', 'C': 'ਣ', 'V': 'ਨ', 'B': 'ਲ਼', 'N': 'ਲ', 'M': 'ਸ਼', '<': 'ਸ਼', '>': '।', '?': 'ਯ'
     }
 };
